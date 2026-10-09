@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francis Zhaohan Li — From Shore to Plateau</title>
+<meta name="description" content="A personal journey where environment meets health: from the beaches of South Florida to the high plateau of Qinghai, through classrooms, laboratories and clinics.">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* ============ design tokens ============ */
+:root{
+  --deep:#0E3536;
+  --deep-2:#123F40;
+  --tide:#2E7D7C;
+  --tide-soft:#A6DCD7;
+  --sand:#F4EFE3;
+  --snow:#F7FAF5;
+  --cream:#F7F1E2;
+  --ink:#142B2B;
+  --terra:#C4613F;
+  --amber:#D89A4E;
+  --line:rgba(244,239,227,.16);
+  --shadow:0 30px 60px -30px rgba(8,28,28,.55);
+  --font-display:'Marcellus','Georgia','Times New Roman',serif;
+  --font-body:'Spectral','Georgia','Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  font-weight:400;
+  color:var(--ink);
+  background:var(--deep);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+::selection{background:rgba(196,97,63,.4);}
+
+/* ============ navigation ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 34px;
+  transition:background .4s ease,box-shadow .4s ease,padding .4s ease;
+}
+.nav.solid{
+  background:rgba(11,40,41,.94);
+  backdrop-filter:blur(10px);
+  box-shadow:0 1px 0 var(--line);
+  padding:12px 34px;
+}
+.nav-brand{font-family:var(--font-display);font-size:20px;letter-spacing:.14em;color:var(--snow);}
+.nav-brand span{color:var(--amber);}
+.nav-links{display:flex;gap:4px;align-items:center;list-style:none;}
+.nav-links a{
+  display:block;padding:10px 12px;color:rgba(247,250,245,.85);
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  transition:color .3s ease;border-radius:6px;
+}
+.nav-links a:hover{color:#fff;}
+.nav-links a.current{color:var(--amber);}
+
+/* ============ journey line ============ */
+.journey{position:fixed;left:22px;top:50%;transform:translateY(-50%);z-index:90;display:none;}
+@media(min-width:1180px){ .journey{display:block;} }
+.journey-track{
+  position:relative;width:2px;height:46vh;
+  background:linear-gradient(to bottom,rgba(247,250,245,.14),rgba(247,250,245,.6));
+  border-radius:2px;
+}
+.rail-walker{
+  position:absolute;left:50%;top:0;width:64px;height:85px;
+  transform:translateX(-50%);
+  pointer-events:none;will-change:top;
+}
+.rail-walker canvas{width:100%;height:100%;display:block;}
+.journey-stops{position:absolute;right:14px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;}
+.journey-stop{
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(247,250,245,.3);
+  border:1px solid rgba(247,250,245,.45);
+  transition:background .3s ease,transform .3s ease;
+}
+.journey-stop.on{background:var(--amber);transform:scale(1.6);border-color:var(--amber);}
+.journey-tip{
+  position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  white-space:nowrap;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(247,250,245,.6);opacity:0;transition:opacity .3s ease;
+  font-family:var(--font-display);
+}
+.journey-stop.on .journey-tip{opacity:1;color:var(--snow);}
+
+/* ============ hero ============ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:flex-end;
+  background-image:linear-gradient(105deg,rgba(9,28,29,.96) 0%,rgba(9,28,29,.78) 26%,rgba(9,28,29,.3) 46%,rgba(9,28,29,.16) 66%,rgba(9,28,29,.55) 100%),
+    url('assets/hero.jpg');
+  background-size:cover;background-position:center 30%;
+  color:var(--snow);
+  padding:120px 8vw 84px;
+}
+.hero-inner{max-width:1240px;width:100%;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--font-display);
+  font-size:13px;letter-spacing:.34em;text-transform:uppercase;
+  color:rgba(247,250,245,.85);
+  margin-bottom:26px;
+}
+.hero-eyebrow::before{content:"";width:44px;height:1px;background:var(--amber);}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(46px,8.2vw,104px);
+  line-height:1.04;font-weight:400;
+  animation:rise 1.1s cubic-bezier(.22,.61,.36,1) both;
+  text-shadow:0 2px 8px rgba(8,28,28,.8),0 4px 34px rgba(8,28,28,.55);
+}
+.hero-sub{
+  margin-top:22px;max-width:600px;
+  font-size:clamp(17px,1.6vw,21px);font-weight:300;
+  color:rgba(247,250,245,.96);
+  text-shadow:0 1px 6px rgba(8,28,28,.85),0 2px 18px rgba(8,28,28,.6);
+  text-wrap:pretty;
+  animation:rise 1.1s .18s cubic-bezier(.22,.61,.36,1) both;
+}
+.hero-meta{
+  margin-top:34px;display:flex;align-items:center;gap:18px;
+  animation:rise 1.1s .32s cubic-bezier(.22,.61,.36,1) both;
+}
+.hero-avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(247,250,245,.55);}
+.hero-meta p{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,250,245,.82);}
+.hero-scroll{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(247,250,245,.7);font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  animation:rise 1.1s .5s cubic-bezier(.22,.61,.36,1) both;
+}
+.hero-scroll svg{animation:drift 2.4s ease-in-out infinite;}
+@keyframes rise{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes drift{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* ============ prologue ============ */
+.prologue{background:var(--deep);color:var(--snow);padding:110px 8vw;}
+.prologue-inner{max-width:900px;margin:0 auto;}
+.prologue-mark{
+  font-family:var(--font-display);color:var(--amber);
+  font-size:13px;letter-spacing:.34em;text-transform:uppercase;
+  margin-bottom:26px;
+}
+.prologue .lead{
+  font-size:clamp(23px,2.7vw,33px);font-weight:300;line-height:1.5;
+  text-wrap:pretty;font-family:var(--font-display);
+}
+.prologue .lead em{font-style:italic;color:var(--tide-soft);}
+.prologue .rest{
+  margin-top:22px;color:rgba(247,250,245,.82);
+  font-size:17px;font-weight:300;font-style:italic;
+}
+
+/* ============ chapters ============ */
+.chapter{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;}
+.chapter-bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;}
+.ch-dark .chapter-bg{background-image:linear-gradient(to right,rgba(8,30,31,.965) 0%,rgba(8,30,31,.86) 50%,rgba(8,30,31,.64) 100%),var(--cbg);}
+.ch-light .chapter-bg{background-image:linear-gradient(to right,rgba(244,239,227,.995) 0%,rgba(244,239,227,.97) 52%,rgba(244,239,227,.93) 100%),var(--cbg);}
+.ch-dark{color:var(--snow);}
+.ch-light{color:var(--ink);}
+.chapter-inner{width:100%;max-width:1240px;margin:0 auto;padding:130px 8vw;}
+.eyebrow{
+  font-family:var(--font-display);
+  font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:12px;
+  margin-bottom:24px;
+}
+.ch-dark .eyebrow{color:var(--tide-soft);}
+.ch-light .eyebrow{color:var(--tide);}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--terra);}
+.chapter h2{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(32px,4.6vw,60px);
+  line-height:1.12;letter-spacing:.01em;
+  max-width:820px;text-wrap:pretty;
+}
+.chapter h2 em{font-style:italic;}
+.ch-grid{margin-top:44px;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start;}
+.prose p{font-size:17px;font-weight:300;text-wrap:pretty;margin-bottom:16px;}
+.prose p strong{font-weight:600;}
+.ch-dark .prose{color:rgba(247,250,245,.9);}
+.ch-light .prose{color:rgba(20,43,43,.85);}
+.prose .note{
+  display:block;margin-top:24px;padding:18px 22px;
+  border-left:2px solid var(--terra);
+  font-style:italic;font-size:16px;line-height:1.65;
+}
+.ch-dark .prose .note{background:rgba(196,97,63,.12);color:rgba(247,250,245,.88);}
+.ch-light .prose .note{background:rgba(196,97,63,.08);color:rgba(20,43,43,.8);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.chips span{
+  display:inline-block;padding:7px 14px;border-radius:999px;
+  font-size:13px;letter-spacing:.05em;
+  border:1px solid var(--line);
+}
+.ch-dark .chips span{background:rgba(247,250,245,.07);color:rgba(247,250,245,.88);border-color:rgba(247,250,245,.22);}
+.ch-light .chips span{background:rgba(255,255,255,.7);color:rgba(20,43,43,.78);border-color:rgba(20,43,43,.2);}
+
+/* media */
+.media-col{display:flex;flex-direction:column;gap:16px;}
+.media-col figure{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);position:relative;}
+.media-col img{width:100%;height:100%;object-fit:cover;}
+.media-col .tall{aspect-ratio:3/4;}
+.media-col .wide{aspect-ratio:16/10;}
+.media-col .doc{background:rgba(0,0,0,.08);padding:14px 14px 10px;}
+.media-col .doc img{width:100%;height:auto;object-fit:contain;display:block;border-radius:8px;background:#fff;}
+.media-col .doc figcaption{padding:0 6px 6px;}
+.media-col figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:34px 18px 14px;
+  background:linear-gradient(to top,rgba(8,28,28,.8),transparent);
+  color:rgba(247,250,245,.92);
+  font-size:12.5px;letter-spacing:.08em;
+}
+.photo-grid{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.photo-grid figure{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);position:relative;aspect-ratio:4/3;}
+.photo-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.photo-grid figure:hover img{transform:scale(1.05);}
+.photo-grid figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:26px 14px 11px;
+  background:linear-gradient(to top,rgba(8,28,28,.78),transparent);
+  color:rgba(247,250,245,.92);font-size:12px;letter-spacing:.06em;
+}
+.stats{margin-top:46px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:rgba(247,250,245,.05);text-align:center;}
+.stat b{display:block;font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3vw,38px);color:var(--amber);}
+.stat span{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,250,245,.75);}
+
+/* two-card (shore) */
+.cards2{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.card{border:1px solid var(--line);border-radius:16px;padding:30px 28px;background:rgba(247,250,245,.05);transition:border-color .3s ease,transform .3s ease;}
+.card:hover{border-color:rgba(196,97,63,.55);transform:translateY(-3px);}
+.card svg{width:32px;height:32px;stroke:var(--amber);margin-bottom:16px;}
+.card .kicker{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tide-soft);margin-bottom:9px;font-family:var(--font-display);}
+.card h3{font-family:var(--font-display);font-weight:400;font-size:22px;margin-bottom:10px;}
+.card p{font-size:15.5px;color:rgba(247,250,245,.82);font-weight:300;text-wrap:pretty;}
+
+/* ============ external link button ============ */
+.ext-btn{
+  display:inline-block;margin-top:18px;padding:14px 32px;border-radius:999px;
+  background:var(--amber);color:#241a09;font-weight:600;letter-spacing:.12em;font-size:14.5px;
+  text-decoration:none;box-shadow:0 12px 34px -10px rgba(230,178,92,.55);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+.ext-btn:hover{transform:translateY(-2px);box-shadow:0 18px 44px -10px rgba(230,178,92,.75);background:#f2c877;}
+
+/* ============ honors ============ */
+.honors{background:var(--deep-2);color:var(--snow);padding:120px 8vw;}
+.section-head{max-width:1240px;margin:0 auto 44px;}
+.section-head .eyebrow{margin-bottom:20px;}
+.section-head h2{font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,52px);}
+.section-head p{color:rgba(247,250,245,.75);font-weight:300;margin-top:14px;max-width:640px;text-wrap:pretty;}
+.honors-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.honor{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(247,250,245,.04);transition:transform .3s ease,border-color .3s ease;}
+.honor:hover{transform:translateY(-4px);border-color:rgba(196,97,63,.5);}
+.honor-media{aspect-ratio:16/9;overflow:hidden;}
+.honor-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.honor:hover .honor-media img{transform:scale(1.06);}
+.honor-body{padding:22px 24px 24px;}
+.honor-body .lvl{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-family:var(--font-display);}
+.honor-body h3{font-family:var(--font-display);font-weight:400;font-size:20px;margin:8px 0 8px;line-height:1.3;}
+.honor-body p{font-size:14px;color:rgba(247,250,245,.72);font-weight:300;line-height:1.6;}
+.honor.plain{display:flex;flex-direction:column;justify-content:center;padding:30px 28px;}
+.honor.plain .lvl{margin-bottom:8px;}
+.honor.wide{grid-column:span 2;}
+.honor-media.logo{background:#F7F9F5;display:flex;align-items:center;justify-content:center;padding:18px;}
+.honor-media.logo img{object-fit:contain;max-height:100%;}
+
+/* ============ beyond ============ */
+.beyond{background:var(--sand);color:var(--ink);padding:120px 8vw;}
+.beyond .section-head p{color:rgba(20,43,43,.7);}
+.beyond-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.beyond-item{
+  border:1px solid rgba(20,43,43,.15);border-radius:14px;
+  padding:26px;background:rgba(255,255,255,.65);
+  transition:transform .3s ease,border-color .3s ease,background .3s ease;
+}
+.beyond-item:hover{transform:translateY(-3px);border-color:rgba(46,125,124,.55);background:#fff;}
+.beyond-item .tag{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-family:var(--font-display);margin-bottom:10px;}
+.beyond-item h3{font-family:var(--font-display);font-weight:400;font-size:18.5px;line-height:1.3;margin-bottom:8px;}
+.beyond-item p{font-size:14.5px;color:rgba(20,43,43,.72);font-weight:300;text-wrap:pretty;}
+
+/* ============ epilogue ============ */
+.epilogue{
+  position:relative;
+  background-image:linear-gradient(rgba(9,28,29,.86),rgba(9,28,29,.92)),
+    url('assets/plateau_bg.jpg');
+  background-size:cover;background-position:center;
+  color:var(--snow);padding:150px 8vw;text-align:center;
+}
+.epilogue-inner{max-width:860px;margin:0 auto;}
+.epilogue .eyebrow{justify-content:center;}
+.epilogue .eyebrow::before{display:none;}
+.epilogue blockquote{font-family:var(--font-display);font-weight:300;font-size:clamp(24px,3.2vw,40px);line-height:1.5;text-wrap:pretty;}
+.epilogue blockquote em{color:var(--amber);font-style:italic;}
+.epilogue .sig{margin-top:44px;display:flex;align-items:center;justify-content:center;gap:18px;}
+.epilogue .sig img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(247,250,245,.4);}
+.epilogue .sig p{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,250,245,.78);text-align:left;line-height:1.5;}
+
+/* ============ footer ============ */
+footer{background:var(--deep);color:rgba(247,250,245,.6);padding:44px 8vw;text-align:center;}
+footer .f-brand{font-family:var(--font-display);font-size:18px;letter-spacing:.16em;color:var(--snow);}
+footer p{margin-top:10px;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,250,245,.45);}
+
+/* ============ reveal ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* ============ responsive ============ */
+@media(max-width:1024px){
+  .ch-grid{grid-template-columns:1fr;gap:34px;}
+  .photo-grid{grid-template-columns:1fr 1fr;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .honors-grid{grid-template-columns:1fr 1fr;}
+  .beyond-grid{grid-template-columns:1fr 1fr;}
+  .cards2{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  .nav{padding:14px 20px;}
+  .nav.solid{padding:10px 20px;}
+  .nav-links{display:none;}
+  .hero{padding:110px 22px 90px;background-position:center 26%;}
+  .chapter-inner{padding:100px 22px;}
+  .prologue,.honors,.beyond{padding:90px 22px;}
+  .photo-grid{grid-template-columns:1fr;}
+  .honors-grid,.beyond-grid{grid-template-columns:1fr;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .hero-avatar{width:56px;height:56px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1;transform:none;}
+}
+
+/* journey map */
+.mapsec{position:relative;padding:150px 0 130px;background:linear-gradient(180deg,rgba(12,46,49,.68),rgba(10,34,36,.97));}
+.map-inner{max-width:1180px;margin:0 auto;padding:0 32px;}
+.mapsec h2{font-family:var(--font-display);font-weight:400;font-size:clamp(30px,3.4vw,46px);line-height:1.14;letter-spacing:.01em;color:var(--cream);margin-top:18px;text-wrap:balance;}
+.mapsec h2 em{font-style:italic;color:var(--tide-soft);}
+.map-sub{margin-top:14px;color:rgba(247,250,245,.9);font-size:16.5px;font-weight:300;}
+.mapbox{margin-top:54px;border:1px solid rgba(244,239,227,.2);border-radius:20px;background:radial-gradient(900px 500px at 72% 18%,rgba(44,100,106,.6),transparent 65%),linear-gradient(180deg,rgba(16,58,62,.92),rgba(9,32,33,.95));padding:26px 26px 30px;}
+.mapbox svg{width:100%;height:auto;display:block;}
+.land path{fill:rgba(244,239,227,.09);stroke:rgba(244,239,227,.26);stroke-width:1;stroke-linejoin:round;}
+.cn path{fill:rgba(196,97,63,.18);stroke:var(--amber);stroke-width:1.9;stroke-linejoin:round;stroke-opacity:.9;}
+.us path{fill:rgba(196,97,63,.18);stroke:var(--amber);stroke-width:1.9;stroke-linejoin:round;stroke-opacity:.9;}
+.stop circle{fill:var(--coral);stroke:rgba(247,250,245,.9);stroke-width:2.4;opacity:0;}
+.mapbox.in .stop circle:not(.hit){animation:stoppop .55s cubic-bezier(.34,1.56,.64,1) forwards;}
+.mapbox.in .stop:nth-of-type(1) circle:not(.hit){animation-delay:.55s;}
+.mapbox.in .stop:nth-of-type(2) circle:not(.hit){animation-delay:.95s;}
+.mapbox.in .stop:nth-of-type(3) circle:not(.hit){animation-delay:1.35s;}
+.mapbox.in .stop:nth-of-type(4) circle:not(.hit){animation-delay:1.75s;}
+.mapbox.in .stop:nth-of-type(5) circle:not(.hit){animation-delay:2.15s;}
+@keyframes stoppop{from{opacity:0;r:0;}to{opacity:1;r:13;}}
+.stop-num{font-family:var(--font-display);font-size:12px;fill:rgba(247,250,245,.96);pointer-events:none;opacity:0;}
+.mapbox.in .stop-num{animation:numfade .4s ease forwards;}
+.mapbox.in .stop:nth-of-type(1) .stop-num{animation-delay:.78s;}
+.mapbox.in .stop:nth-of-type(2) .stop-num{animation-delay:1.18s;}
+.mapbox.in .stop:nth-of-type(3) .stop-num{animation-delay:1.58s;}
+.mapbox.in .stop:nth-of-type(4) .stop-num{animation-delay:1.98s;}
+.mapbox.in .stop:nth-of-type(5) .stop-num{animation-delay:2.38s;}
+@keyframes numfade{from{opacity:0;}to{opacity:1;}}
+.stop.active .stop-num{fill:var(--cream);}
+.stop .halo{fill:none;stroke:var(--coral);stroke-width:1.4;opacity:0;}
+.mapbox.in .stop .halo{animation:halopulse 2.2s ease-out .9s infinite;}
+.mapbox.in .stop:nth-of-type(2) .halo{animation-delay:1.3s;}
+.mapbox.in .stop:nth-of-type(3) .halo{animation-delay:1.7s;}
+.mapbox.in .stop:nth-of-type(4) .halo{animation-delay:2.1s;}
+.mapbox.in .stop:nth-of-type(5) .halo{animation-delay:2.5s;}
+@keyframes halopulse{0%{opacity:.55;r:13;}100%{opacity:0;r:36;}}
+.map-legend{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px;}
+.map-legend li{display:flex;flex-direction:column;gap:5px;padding:14px 16px;border-left:1px solid rgba(244,239,227,.18);}
+.map-legend b{font-family:var(--font-display);font-weight:400;font-size:12.5px;color:var(--amber);letter-spacing:.08em;}
+.map-legend .when{font-size:13px;color:rgba(247,250,245,.86);font-weight:300;line-height:1.5;}
+.map-legend .alt{font-size:13px;color:var(--tide-soft);font-weight:500;letter-spacing:.06em;}
+@media(max-width:1024px){.map-legend{grid-template-columns:1fr 1fr;}.map-legend li{border-left:none;border-top:1px solid rgba(244,239,227,.18);}}
+@media(max-width:720px){.map-legend{grid-template-columns:1fr;}}
+
+/* map interaction */
+.mapbox{position:relative;}
+.mapbox svg{width:100%;height:auto;display:block;}
+#mapCanvas{position:absolute;pointer-events:none;z-index:2;}
+.map-hint{position:absolute;top:16px;right:22px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,250,245,.8);}
+.stop .hit{fill:rgba(0,0,0,0);pointer-events:all;cursor:pointer;}
+.stop{outline:none;}
+.stop:focus-visible .hit{stroke:var(--amber);stroke-width:1.6;fill:rgba(196,97,63,.12);}
+.stop:hover .hit{fill:rgba(196,97,63,.12);}
+.stop:hover circle:not(.hit):not(.halo),.stop.active circle:not(.hit):not(.halo){fill:var(--amber);stroke:var(--cream);}
+.stop.active circle:not(.hit):not(.halo){stroke-width:3;r:15;}
+.map-legend li{cursor:pointer;transition:background .25s ease,border-color .25s ease;}
+.map-legend li:hover{background:rgba(244,239,227,.06);}
+.map-legend li.active{background:rgba(196,97,63,.16);border-left-color:var(--amber);}
+.map-detail{margin-top:20px;border:1px solid rgba(244,239,227,.16);border-radius:20px;background:linear-gradient(135deg,rgba(13,46,50,.62),rgba(7,26,27,.82));padding:30px 34px 32px;}
+.map-detail.in>*{animation:detailin .5s ease both;}
+@keyframes detailin{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.d-tag{font-family:var(--font-display);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tide-soft);}
+.d-title{font-family:var(--font-display);font-weight:400;font-size:clamp(24px,2.6vw,32px);color:var(--cream);margin-top:10px;letter-spacing:.01em;}
+.d-head{display:flex;align-items:center;gap:12px;margin-top:9px;}
+.d-city{font-size:14px;color:rgba(247,250,245,.94);letter-spacing:.05em;}
+.d-alt{font-size:12.5px;color:var(--amber);letter-spacing:.1em;border:1px solid rgba(196,97,63,.55);border-radius:20px;padding:3px 11px;}
+.d-desc{margin-top:16px;max-width:680px;color:rgba(247,250,245,.92);font-size:16px;font-weight:300;line-height:1.7;text-wrap:pretty;}
+.d-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.d-chips span{font-size:12px;letter-spacing:.06em;color:var(--tide-soft);border:1px solid rgba(143,191,187,.4);border-radius:20px;padding:4px 13px;}
+.d-more{display:inline-block;margin-top:20px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tide-soft);border-bottom:1px solid rgba(143,191,187,.4);padding-bottom:3px;transition:color .25s ease,border-color .25s ease;}
+.d-more:hover{color:var(--cream);border-color:var(--cream);}
+.d-env{margin-top:24px;border-top:1px solid rgba(244,239,227,.16);padding-top:20px;display:grid;gap:12px;}
+.d-env-label{font-family:var(--font-display);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);}
+.d-env-row{display:flex;gap:16px;align-items:baseline;}
+.d-env-k{flex:0 0 72px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tide-soft);}
+.d-env-v{font-size:15px;color:rgba(247,250,245,.92);font-weight:300;line-height:1.6;text-wrap:pretty;}
+.map-altnote{margin:30px 0 0;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,250,245,.68);}
+@media(max-width:720px){.map-detail{padding:24px 22px 26px;}.map-hint{display:none;}}
+
+/* ============ entrance splash ============ */
+body.splash-open{overflow:hidden;}
+.splash{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  background-color:#0a1c1d;
+  background-image:linear-gradient(180deg,rgba(9,28,29,.72) 0%,rgba(9,28,29,.5) 48%,rgba(9,28,29,.74) 100%),
+    url('assets/hero.jpg');
+  background-position:center 30%;
+  background-size:cover;
+  cursor:pointer;
+  transition:opacity .9s ease,visibility .9s ease;
+}
+.splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.splash-inner{text-align:center;max-width:720px;padding:0 24px;}
+.splash-hi{font-family:var(--font-display);letter-spacing:.34em;text-transform:uppercase;font-size:13px;color:var(--tide-soft);margin-top:30px;text-shadow:0 1px 6px rgba(8,28,28,.9);animation:splashup .8s ease .35s both;}
+.splash-name{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,6vw,64px);letter-spacing:.02em;color:var(--cream);line-height:1.12;margin-top:10px;animation:splashup .8s ease .5s both;;text-shadow:0 2px 10px rgba(8,28,28,.85)}
+.splash-meta{margin-top:16px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,250,245,.88);animation:splashup .8s ease .65s both;;text-shadow:0 2px 10px rgba(8,28,28,.85)}
+.splash-sub{margin-top:12px;font-size:16.5px;font-weight:300;color:rgba(247,250,245,.82);animation:splashup .8s ease .8s both;;text-shadow:0 2px 10px rgba(8,28,28,.85)}
+.splash-enter{margin-top:34px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);animation:splashup .8s ease 1s both,splashpulse 2.4s ease 1.8s infinite;}
+.splash-enter span{display:inline-block;animation:splashbob 1.6s ease 1.8s infinite;}
+@keyframes splashin{from{opacity:0;transform:translateY(24px) scale(.94);}to{opacity:1;transform:none;}}
+@keyframes splashup{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+@keyframes splashpulse{0%,100%{opacity:1;}50%{opacity:.45;}}
+@keyframes splashbob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* ============ lightbox ============ */
+.lightbox{
+  position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;
+  background:rgba(6,20,20,.94);backdrop-filter:blur(6px);
+}
+.lightbox.open{display:flex;}
+.lb-stage{max-width:min(92vw,1300px);max-height:88vh;margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.lb-stage img{max-width:92vw;max-height:78vh;object-fit:contain;border-radius:10px;box-shadow:0 24px 70px -20px rgba(0,0,0,.8);}
+.lb-stage figcaption{color:rgba(247,250,245,.85);font-size:14px;font-weight:300;text-align:center;max-width:80vw;}
+.lb-close,.lb-nav{
+  position:fixed;border:0;background:rgba(255,255,255,.08);color:var(--snow);
+  font-size:26px;line-height:1;cursor:pointer;border-radius:50%;
+  width:52px;height:52px;display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease,transform .2s ease;z-index:1201;
+}
+.lb-close:hover,.lb-nav:hover{background:rgba(255,255,255,.2);transform:scale(1.06);}
+.lb-close{top:22px;right:22px;font-size:30px;}
+.lb-prev{left:22px;top:50%;transform:translateY(-50%);font-size:34px;}
+.lb-next{right:22px;top:50%;transform:translateY(-50%);font-size:34px;}
+.lb-nav:hover{transform:translateY(-50%) scale(1.06);}
+@media(max-width:720px){
+  .lb-close{top:14px;right:14px;width:44px;height:44px;}
+  .lb-prev{left:10px;width:44px;height:44px;}
+  .lb-next{right:10px;width:44px;height:44px;}
+}
+@media(max-width:720px){
+  .splash-name{font-size:clamp(34px,9vw,48px);}
+  .splash-meta{font-size:12px;letter-spacing:.1em;}
+  .splash-sub{font-size:14.5px;}
+}
+
+/* hide platform watermark */
+div[data-custom-element="doubao-watermark"],
+div[data-custom-element="doubao-watermark-mobile"],
+div[data-custom-element$="-watermark"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}
+
+</style>
+</head>
+<body>
+
+<!-- ============ entrance splash ============ -->
+<div class="splash" id="splash" role="button" tabindex="0" aria-label="Enter the journey of Francis Zhaohan Li">
+  <div class="splash-inner">
+    <p class="splash-hi">Hi, it's</p>
+    <h1 class="splash-name">Francis&nbsp;Zhaohan&nbsp;Li</h1>
+    <p class="splash-meta">North Broward Preparatory School · Coconut Creek, Florida</p>
+    <p class="splash-sub">From the shores of South Florida to the high plateau of Qinghai —<br>where environment meets health.</p>
+    <p class="splash-enter">Tap anywhere to enter <span>↓</span></p>
+  </div>
+</div>
+
+<!-- ============ journey rail + rappel/climb chibi ============ -->
+<div class="journey" id="journey" aria-hidden="true">
+  <div class="journey-track">
+    <canvas id="railWalker" width="150" height="200" class="rail-walker"></canvas>
+    <div class="journey-stops">
+      <div class="journey-stop" data-target="shore"><span class="journey-tip">Shore · 0 m</span></div>
+      <div class="journey-stop" data-target="seminar"><span class="journey-tip">Seminar · Berkeley</span></div>
+      <div class="journey-stop" data-target="plateau"><span class="journey-tip">Plateau · 3,600 m</span></div>
+      <div class="journey-stop" data-target="lab"><span class="journey-tip">The Lab</span></div>
+      <div class="journey-stop" data-target="clinic"><span class="journey-tip">The Clinic</span></div>
+      <div class="journey-stop" data-target="table"><span class="journey-tip">The Table</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ journey line ============ -->
+<!-- ============ navigation ============ -->
+<nav class="nav" id="nav">
+  <a class="nav-brand" href="#top">Francis <span>Li</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#shore">The Shore</a></li>
+    <li><a href="#seminar">The Seminar</a></li>
+    <li><a href="#plateau">The Plateau</a></li>
+    <li><a href="#lab">The Lab</a></li>
+    <li><a href="#clinic">The Clinic</a></li>
+    <li><a href="#table">The Table</a></li>
+    <li><a href="#honors">Honors</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<!-- ============ journey map ============ -->
+<section class="mapsec" id="map">
+  <div class="map-inner">
+    <p class="eyebrow reveal">One glance at the journey</p>
+    <h2 class="reveal">Born in Los Angeles<br>raised in Beijing<br><em>schooled in Florida.</em></h2>
+    <p class="map-sub reveal">Five places, one question — and the question kept changing altitude.</p>
+    <div class="mapbox reveal">
+      <p class="map-hint">Click a stop · details below</p>
+      <svg viewBox="0 0 1400 500" role="img" aria-label="Francis's journey across the United States and China">
+        <g class="land">
+<path d="M1235 490L1231 497L1228 498L1223 497L1215 497L1211 498L1214 491L1218 493L1224 494L1230 493L1234 488Z"/>
+<path d="M1251 492L1251 498L1245 493L1246 487L1248 484L1248 488L1251 489L1251 492Z"/>
+<path d="M1112 499L1110 493L1109 487L1104 482L1102 476L1098 472L1093 464L1093 461L1096 461L1103 463L1108 470L1111 474L1114 477L1118 485L1123 485L1127 490L1130 496L1133 499Z"/>
+<path d="M1200 487L1205 494L1200 494L1198 499L1158 497L1158 490L1161 486L1165 488L1168 487L1169 481L1177 478L1180 472L1183 468L1185 465L1189 461L1192 456L1195 451L1199 454L1199 457L1202 459L1206 461L1206 464L1203 465L1204 468L1200 470L1197 477L1201 484L1200 487Z"/>
+<path d="M1240 440L1241 445L1241 449L1240 455L1238 448L1236 452L1237 457L1236 460L1230 456L1229 451L1230 447L1227 444L1226 447L1220 451L1221 443L1224 441L1227 438L1228 441L1232 439L1233 436L1236 436L1236 430L1240 434L1240 437L1240 440Z"/>
+<path d="M1026 456L1022 457L1020 452L1019 441L1021 430L1024 434L1027 439L1029 446L1028 454Z"/>
+<path d="M351 428L348 429L348 426L348 423L351 422L351 428Z"/>
+<path d="M1229 427L1226 433L1224 436L1221 431L1224 427L1224 422L1227 422L1226 427L1230 420L1229 427Z"/>
+<path d="M1203 433L1197 440L1199 435L1203 431L1205 426L1208 419L1209 425L1206 429L1203 433Z"/>
+<path d="M1219 415L1222 417L1225 417L1225 420L1223 423L1220 425L1220 422L1220 418L1219 415Z"/>
+<path d="M1236 413L1238 421L1234 419L1234 422L1235 426L1233 423L1231 418L1230 410L1235 410L1236 413Z"/>
+<path d="M1217 407L1216 413L1214 409L1212 404L1216 404L1217 407Z"/>
+<path d="M1216 368L1219 370L1220 373L1222 378L1221 384L1218 386L1217 392L1218 398L1221 398L1229 402L1228 405L1230 410L1226 407L1224 403L1223 406L1220 402L1216 403L1213 401L1213 398L1213 395L1210 390L1210 383L1212 374L1214 368Z"/>
+<path d="M329 370L325 372L322 372L322 369L326 368L329 368Z"/>
+<path d="M276 372L272 372L269 370L273 368L276 369L279 372L276 372Z"/>
+<path d="M296 358L300 359L305 358L309 360L312 362L316 367L315 370L312 368L309 368L306 370L302 374L300 371L297 370L292 370L287 369L292 368L296 368L295 364L295 361L292 360L296 358Z"/>
+<path d="M1164 367L1160 370L1156 368L1156 362L1159 358L1164 356L1168 359L1165 362L1164 367Z"/>
+<path d="M263 337L264 340L269 339L275 345L278 349L282 350L285 352L289 355L285 358L282 358L278 357L272 358L275 354L270 352L267 346L264 346L260 344L252 341L252 338L248 338L244 342L239 344L240 341L243 337L246 336L249 335L254 335L258 335L263 337Z"/>
+<path d="M273 330L270 327L269 324L270 320L273 326L273 330Z"/>
+<path d="M1216 337L1214 343L1211 337L1211 332L1213 325L1217 319L1219 326L1216 337Z"/>
+<path d="M271 310L266 311L268 308L271 308Z"/>
+<path d="M275 310L274 315L274 310L272 307L275 310Z"/>
+<path d="M1280 256L1280 259L1278 263L1273 262L1272 266L1269 264L1269 261L1272 257L1276 255L1280 256Z"/>
+<path d="M805 245L802 248L797 253L794 249L797 247L800 247L805 245Z"/>
+<path d="M753 245L756 247L759 247L763 247L765 250L758 251L752 248L753 245Z"/>
+<path d="M714 227L713 233L712 238L709 236L706 235L700 231L700 228L706 228L711 228L714 227Z"/>
+<path d="M684 206L687 211L687 220L684 220L681 220L680 212L679 207L682 208Z"/>
+<path d="M1310 235L1308 240L1309 244L1306 249L1300 252L1292 253L1285 261L1282 258L1282 253L1273 254L1268 258L1262 258L1267 263L1264 275L1261 278L1260 269L1257 267L1255 262L1259 260L1262 255L1267 252L1270 247L1279 245L1285 246L1290 234L1293 237L1300 230L1302 227L1305 218L1305 210L1307 206L1312 204L1314 214L1314 220L1310 227L1310 235Z"/>
+<path d="M686 199L684 204L681 198L685 193L686 199Z"/>
+<path d="M1324 184L1327 186L1330 183L1331 191L1324 193L1320 200L1313 195L1310 203L1305 203L1304 196L1307 190L1312 190L1313 180L1314 175L1320 182L1324 184Z"/>
+<path d="M339 167L342 168L346 168L344 171L336 169L335 166L339 167Z"/>
+<path d="M347 149L339 147L334 144L342 145L347 148Z"/>
+<path d="M55 153L52 154L44 151L39 146L33 143L31 139L37 139L44 141L48 147L53 150L55 153Z"/>
+<path d="M374 138L371 144L374 142L377 143L376 146L380 148L387 148L385 153L389 152L389 156L391 160L389 167L384 166L385 160L378 165L375 165L378 162L374 160L369 160L359 160L362 155L364 149L368 138L371 134L376 131L374 138Z"/>
+<path d="M11 114L15 113L14 122L18 127L13 124L12 121L9 118L8 115L11 114Z"/>
+<path d="M1322 138L1327 150L1320 148L1317 158L1322 165L1322 170L1318 166L1315 172L1314 166L1315 159L1314 151L1315 146L1315 136L1313 129L1313 119L1317 116L1316 113L1319 116L1321 123L1320 130L1322 138Z"/>
+<path d="M608 127L600 131L593 130L597 122L595 115L601 110L605 106L609 106L614 110L611 115L612 120L608 127Z"/>
+<path d="M701 103L698 109L693 105L692 102L699 99L701 103Z"/>
+<path d="M626 81L621 89L626 88L631 88L630 94L626 100L631 101L635 110L639 111L642 119L643 122L649 123L648 128L648 134L643 137L637 137L629 139L624 141L619 140L616 143L613 142L620 134L624 133L617 131L621 126L618 123L619 118L626 119L627 114L623 110L618 109L618 104L614 105L614 98L611 94L613 87L617 81L621 82L626 81Z"/>
+<path d="M265 56L263 60L259 57L261 54L265 56Z"/>
+<path d="M252 52L246 56L243 56L246 51L252 51Z"/>
+<path d="M237 31L237 34L240 33L243 35L248 37L253 40L254 43L257 42L261 45L256 47L249 45L246 42L242 46L235 50L233 45L227 46L231 43L231 37L233 30L237 31Z"/>
+<path d="M572 25L571 30L576 35L570 40L556 45L552 46L546 45L533 43L537 40L527 36L535 35L525 31L528 27L536 26L543 30L550 27L556 29L564 25L572 25Z"/>
+<path d="M281 20L275 21L274 17L276 13L280 12L284 14L284 17L281 20Z"/>
+<path d="M187 6L184 9L177 7L174 7L167 4L171 2L180 1L184 4L187 6Z"/>
+<path d="M211 4L211 11L217 5L223 10L222 15L226 20L231 15L235 9L235 1L242 1L249 2L255 6L255 10L252 13L255 17L254 21L245 26L239 27L234 25L232 28L228 34L226 37L221 42L214 43L210 46L210 50L204 51L199 57L193 65L192 71L191 79L198 80L200 87L203 92L209 91L218 94L223 97L226 100L232 102L237 105L245 105L250 106L249 112L251 119L254 127L261 134L265 132L268 125L265 113L262 110L269 106L275 101L277 96L277 91L274 85L268 80L274 72L272 66L270 55L273 53L281 55L286 56L290 54L295 56L301 61L310 64L310 70L312 79L316 80L320 84L327 80L331 72L334 69L338 75L344 85L349 93L347 98L354 102L358 106L366 108L369 110L370 116L374 117L376 128L373 130L370 133L362 135L356 141L348 142L338 141L330 141L326 141L322 146L316 150L309 159L303 166L307 164L315 155L325 149L332 148L336 152L332 157L333 164L335 170L341 173L349 172L353 164L354 169L357 172L351 177L340 181L336 184L330 189L327 188L327 182L335 176L327 177L322 178L318 183L313 186L308 188L305 193L305 198L306 201L309 201L305 204L300 205L295 206L291 208L298 206L293 210L290 210L289 216L285 222L282 218L283 222L284 226L280 234L281 229L279 226L278 220L277 223L278 228L275 227L279 229L279 236L281 239L281 246L278 251L273 253L270 258L265 261L260 268L257 271L255 275L254 280L255 285L256 292L258 297L259 300L261 308L261 313L260 316L259 320L255 320L255 317L250 309L248 304L247 301L248 296L247 292L243 286L237 288L234 285L231 283L225 284L221 283L217 283L216 286L216 289L216 292L213 292L209 292L206 288L202 289L198 287L195 288L191 289L187 295L182 298L180 301L179 304L179 309L179 313L178 321L177 327L177 336L176 340L177 344L178 347L179 353L183 358L184 362L186 366L191 367L193 370L197 368L200 368L204 366L207 365L210 362L211 358L211 352L215 348L220 346L225 347L228 346L229 351L226 355L225 360L225 364L224 370L222 374L222 378L221 382L219 387L222 388L225 387L228 387L232 386L235 387L240 387L243 390L246 393L246 398L244 403L244 406L245 411L243 415L243 419L244 422L245 426L247 429L249 432L251 436L254 437L257 437L261 433L266 432L270 434L274 438L280 433L282 430L282 424L285 421L288 421L292 420L296 416L300 411L303 413L302 416L299 418L301 422L301 425L299 430L300 435L304 430L302 427L302 422L308 419L307 415L310 418L314 418L317 422L317 425L321 425L326 424L329 427L333 428L335 424L341 424L347 423L343 426L345 429L348 429L352 433L353 439L357 440L360 443L363 448L363 451L368 455L375 459L380 457L385 459L390 461L395 467L396 470L398 474L401 486L404 488L404 493L400 498L261 497L263 493L266 490L268 487L267 484L268 481L271 481L273 476L275 473L274 467L273 460L273 452L271 448L268 442L268 438L265 436L262 439L259 441L261 446L257 448L256 444L253 442L250 441L247 442L244 440L244 437L242 434L239 431L237 428L237 432L234 429L234 425L233 422L232 419L230 416L229 413L225 408L225 405L221 406L217 404L214 403L211 401L208 401L203 396L198 388L195 386L191 384L185 387L182 388L179 386L176 385L171 382L168 381L162 377L158 374L154 372L149 369L148 366L142 362L140 358L139 354L140 351L141 347L140 344L139 341L137 337L133 330L129 325L126 320L122 317L122 311L117 306L116 301L113 300L110 297L108 293L105 286L104 280L104 277L100 275L96 273L95 276L96 279L96 285L102 292L103 295L106 302L108 306L111 310L113 316L114 319L115 323L116 326L120 330L121 333L119 337L117 333L114 329L111 325L108 323L108 318L108 314L105 312L102 309L97 306L95 302L99 299L99 296L95 291L92 289L91 284L89 280L87 274L85 268L84 264L81 260L78 257L74 255L69 254L68 249L63 242L59 232L57 228L53 222L53 216L50 212L51 206L51 200L50 195L52 188L53 175L52 165L50 159L49 156L56 157L59 164L59 156L58 150L48 143L44 140L36 137L33 131L34 126L28 123L27 117L21 112L21 109L19 106L14 104L13 97L7 92L4 85L3 3L10 4L17 0L28 2L44 4L51 4L57 3L64 1L71 4L83 7L89 8L94 8L100 11L93 15L102 17L115 16L119 14L124 19L129 15L124 12L127 10L133 9L137 9L141 10L146 14L151 14L159 17L167 16L173 16L173 11L177 10L185 13L184 19L188 14L191 14L193 7L188 2L202 2L211 4Z"/>
+<path d="M161 3L153 4L156 6L155 9L146 8L138 6L132 6L123 9L109 10L103 10L100 7L94 5L90 6L84 0Z"/>
+<path d="M323 6L314 9L325 14L333 15L340 22L347 22L346 27L337 36L331 33L324 26L318 27L317 31L322 35L329 38L334 47L332 52L326 50L314 45L321 51L326 55L327 58L314 55L304 51L298 47L292 41L286 38L272 41L268 39L271 34L280 33L290 32L290 26L296 19L295 16L285 10L276 8L279 6L274 2L270 1L263 1L255 2L238 0Z"/>
+<path d="M1399 2L1393 122L1392 129L1385 136L1383 131L1381 120L1378 104L1381 95L1385 90L1385 87L1392 85L1397 59L1384 61L1373 73L1376 78L1366 79L1359 80L1359 75L1352 74L1346 77L1331 76L1316 78L1300 92L1282 109L1289 110L1292 114L1296 116L1299 112L1305 113L1311 121L1312 127L1308 134L1308 143L1305 154L1298 164L1297 169L1290 178L1284 186L1281 190L1274 194L1271 194L1268 191L1262 196L1257 200L1256 203L1256 208L1253 211L1248 214L1246 219L1250 224L1254 233L1255 237L1255 245L1253 249L1249 251L1245 254L1241 254L1240 250L1241 245L1239 238L1243 236L1239 230L1235 231L1233 228L1234 225L1236 219L1233 217L1230 215L1224 217L1220 220L1215 222L1218 219L1217 216L1220 211L1218 208L1214 210L1208 215L1206 220L1201 220L1198 223L1201 228L1205 229L1205 233L1209 235L1214 229L1218 232L1221 232L1222 236L1215 238L1213 242L1209 246L1206 251L1211 255L1213 262L1216 268L1219 274L1219 279L1216 281L1217 285L1220 287L1219 293L1218 298L1212 307L1208 316L1204 325L1197 331L1191 337L1185 338L1182 341L1178 342L1171 346L1166 347L1165 355L1162 355L1161 350L1162 347L1156 345L1153 346L1147 352L1143 359L1142 364L1146 371L1150 381L1154 385L1157 391L1160 404L1159 417L1155 421L1150 426L1146 432L1140 439L1138 434L1139 429L1136 425L1132 424L1130 420L1128 413L1123 410L1119 410L1120 404L1116 404L1115 412L1113 423L1111 429L1112 434L1115 434L1117 441L1117 447L1120 451L1123 452L1125 456L1129 461L1131 465L1132 470L1131 473L1132 476L1132 480L1135 488L1135 491L1132 491L1127 486L1122 480L1121 477L1119 472L1118 466L1116 462L1117 457L1116 454L1114 451L1113 448L1110 444L1108 440L1107 444L1106 440L1107 436L1108 429L1108 424L1109 418L1108 414L1108 406L1106 403L1105 394L1104 385L1102 379L1099 383L1093 388L1088 385L1089 377L1088 370L1085 362L1085 359L1082 358L1079 352L1078 349L1077 345L1077 342L1075 337L1070 337L1071 340L1069 344L1066 344L1063 342L1063 345L1059 345L1053 346L1054 352L1051 356L1044 361L1039 369L1035 374L1031 378L1031 382L1028 383L1024 386L1020 392L1021 401L1022 407L1020 414L1020 426L1017 426L1015 432L1012 436L1011 441L1004 436L1002 426L1000 419L998 416L996 409L995 400L994 396L990 386L988 372L986 363L986 354L985 347L978 352L975 351L969 342L970 337L964 331L961 329L959 324L956 318L947 320L939 320L933 321L924 319L918 317L913 316L911 307L905 307L900 311L895 308L890 303L885 301L882 294L879 285L876 286L873 283L871 286L868 286L869 289L870 296L872 302L875 304L879 309L879 312L879 315L880 319L882 323L881 318L883 314L886 316L886 320L885 324L885 327L890 327L894 327L897 328L900 323L904 318L907 314L908 311L908 315L908 322L910 327L913 329L917 330L922 336L925 339L923 345L920 349L918 354L915 355L914 359L915 364L912 365L909 367L909 371L905 372L903 377L898 378L895 381L889 383L888 386L888 389L884 392L876 395L872 400L868 400L865 403L862 404L858 405L855 407L852 409L847 410L846 406L846 402L844 394L843 391L843 388L844 383L843 380L841 375L836 367L835 361L832 356L826 348L826 343L826 339L823 331L821 328L817 322L816 317L813 310L810 304L807 300L806 296L806 293L807 290L804 298L803 301L800 300L798 297L795 287L796 295L799 302L803 313L804 317L806 321L810 329L809 335L815 341L817 350L817 359L819 367L823 371L826 380L827 386L830 390L836 396L839 401L841 405L845 409L846 414L843 416L847 419L848 422L850 425L857 424L862 423L866 421L869 420L873 418L877 417L881 414L883 420L883 424L882 427L881 434L878 442L875 451L871 462L867 470L862 480L857 485L850 492L845 498L685 498L686 493L686 484L687 478L685 473L682 469L681 466L676 468L672 470L669 470L666 465L665 460L661 455L658 455L653 455L650 456L646 458L638 462L631 466L627 464L622 463L619 463L613 464L610 466L605 469L598 465L594 460L590 456L586 452L582 448L579 444L578 436L576 432L574 429L571 427L571 424L569 421L566 418L563 416L562 413L561 406L561 403L559 397L559 393L561 388L563 385L562 381L563 377L564 371L564 364L563 360L563 356L562 353L560 350L560 347L560 344L564 338L565 331L567 326L570 321L570 317L572 312L575 310L578 303L581 300L585 299L589 294L595 286L594 277L596 271L597 267L600 263L604 259L608 256L611 249L613 245L616 245L619 248L623 247L628 249L635 245L640 244L643 241L648 239L656 237L664 237L670 235L675 235L681 236L686 233L689 234L689 238L693 235L691 240L691 243L692 251L689 255L690 259L693 262L701 266L707 266L713 270L715 276L720 277L726 280L731 284L734 282L736 279L735 273L736 270L740 266L743 265L749 267L751 270L754 271L759 272L760 275L766 274L771 276L776 278L782 277L788 275L791 276L792 279L797 278L801 279L805 275L806 271L807 266L809 258L811 253L811 247L812 244L810 241L812 238L809 239L805 237L802 241L795 242L791 238L786 238L785 241L782 242L777 238L772 238L769 231L766 227L768 222L765 218L770 211L777 211L779 206L788 207L794 202L800 200L808 200L816 205L823 208L828 206L832 207L838 203L839 200L837 195L832 192L824 184L819 181L815 177L818 176L822 170L819 167L826 164L822 164L818 164L815 166L811 167L807 169L807 174L814 175L813 178L808 179L801 183L800 178L795 176L800 172L791 169L791 166L787 167L785 171L781 176L779 180L776 188L774 191L772 196L774 200L774 203L778 205L772 207L766 213L764 210L761 208L753 209L757 213L754 215L751 215L749 211L749 217L751 220L752 225L755 227L755 231L750 229L752 233L749 234L751 240L747 240L744 237L742 231L741 226L739 223L737 219L735 216L733 212L732 209L733 204L733 201L730 198L724 194L721 191L717 189L713 184L711 180L708 177L707 180L706 175L703 173L699 176L699 179L700 185L705 189L707 195L713 200L716 200L716 203L720 206L724 208L728 212L727 216L725 212L721 211L719 216L722 218L722 222L717 229L716 223L715 218L714 214L710 210L707 209L705 206L702 205L698 202L694 197L691 193L689 186L683 183L678 187L672 192L662 190L655 192L655 197L655 201L651 206L645 207L641 213L639 219L641 223L638 226L637 231L634 233L630 238L624 238L620 238L617 241L613 243L611 240L610 236L605 235L601 236L598 237L599 231L599 227L595 223L596 219L598 216L598 213L599 209L599 206L598 203L598 196L596 193L603 188L609 189L615 189L620 190L624 190L632 190L634 186L635 171L630 164L627 160L619 157L619 152L625 151L633 153L632 144L636 148L647 142L648 136L653 135L656 133L659 131L663 121L670 118L673 118L678 116L682 114L681 111L681 107L679 103L679 96L681 92L685 92L691 88L691 91L689 94L692 97L686 104L688 107L688 110L693 112L697 113L700 111L705 114L708 116L711 114L718 111L724 108L729 109L734 111L735 108L742 106L741 100L741 94L743 90L748 87L751 93L755 93L756 87L757 83L752 81L751 77L757 75L763 74L769 75L773 75L779 71L774 68L765 68L757 71L749 73L746 69L742 66L743 59L741 53L743 49L747 44L758 36L761 35L761 32L754 29L746 31L741 36L742 40L735 46L725 52L722 62L725 67L730 71L725 79L721 81L719 93L716 99L710 99L708 104L702 105L701 98L697 90L693 80L690 75L680 83L674 85L668 82L666 74L664 57L669 53L681 47L691 39L699 29L711 16L719 10L732 1L788 3L793 1L801 5L814 7L832 15L836 18L836 23L831 27L823 29L802 23L798 24L806 29L807 40L813 42L816 44L817 40L814 37L817 35L829 39L833 37L829 32L840 25L845 26L849 28L852 23L848 19L850 15L847 10L860 12L863 17L857 17L857 21L861 24L868 22L869 18L879 14L896 8L899 9L895 13L900 14L904 11L913 11L920 8L925 12L931 8L926 3L942 3L949 5L966 14L969 10L964 6L958 4L960 1L985 7L990 11L988 16L979 26L984 27L991 23L993 19L997 16L994 12L996 7L991 7L990 3Z"/>
+<path d="M874 205L876 210L880 212L876 213L875 219L873 223L873 226L874 232L879 233L882 237L889 238L896 236L896 229L896 222L893 219L894 214L891 214L892 208L896 210L900 207L897 203L896 199L892 201L891 206L890 202L891 197L890 194L884 192L882 185L879 181L884 182L884 177L888 176L892 177L893 170L892 165L888 166L884 164L878 167L874 169L872 173L867 174L862 181L867 188L866 193L871 201L874 205Z"/>
+<path d="M522 5L509 11L495 13L490 13L485 16L478 24L468 29L465 29L459 31L452 32L448 37L448 42L445 47L437 52L439 58L437 64L435 71L428 71L421 65L412 65L407 61L404 54L396 46L393 41L393 34L386 28L388 23L385 20L389 12L396 9L398 6L399 1L394 3L391 4L387 5L381 3Z"/>
+        </g>
+        <g class="cn">
+<path d="M1227 117L1214 119L1210 123L1211 124L1214 125L1214 127L1211 131L1206 140L1207 142L1200 146L1195 144L1190 155L1189 156L1191 159L1195 158L1198 160L1200 157L1203 157L1209 163L1210 167L1205 166L1198 167L1198 169L1194 169L1192 174L1188 176L1184 176L1180 180L1172 178L1169 183L1172 188L1168 191L1165 194L1159 197L1151 197L1139 203L1137 202L1137 201L1131 201L1119 195L1098 195L1093 186L1093 184L1090 183L1084 179L1072 177L1071 174L1073 171L1073 166L1070 160L1066 157L1063 157L1058 153L1057 149L1053 149L1052 153L1048 154L1047 164L1044 165L1035 163L1031 174L1033 177L1029 176L1020 179L1022 181L1024 192L1022 193L1023 194L1022 194L1021 200L1012 204L1010 207L1006 207L1003 212L1000 212L999 210L998 211L996 211L996 212L992 214L991 218L990 219L991 224L996 225L997 233L994 234L994 235L999 236L999 238L1001 238L1002 244L1004 243L1007 246L1012 246L1012 253L1016 255L1014 257L1014 260L1017 267L1015 269L1014 266L1013 268L1016 278L1019 279L1026 286L1027 283L1030 283L1031 285L1036 289L1037 292L1040 291L1042 295L1043 296L1045 295L1045 298L1047 297L1049 301L1050 299L1051 301L1052 299L1055 301L1062 300L1063 306L1067 298L1073 301L1075 300L1075 303L1078 304L1078 308L1085 308L1088 303L1095 298L1098 298L1101 302L1104 296L1106 299L1107 303L1108 302L1109 303L1109 310L1109 315L1107 317L1104 323L1105 327L1104 329L1110 327L1109 330L1110 334L1113 336L1111 342L1115 342L1116 347L1121 344L1121 349L1124 349L1123 339L1126 340L1127 337L1130 340L1131 337L1134 339L1135 337L1138 337L1141 333L1143 336L1148 337L1146 340L1147 343L1150 346L1154 346L1156 345L1159 346L1159 347L1161 346L1162 347L1161 351L1162 356L1164 356L1165 354L1164 350L1173 344L1177 344L1177 342L1178 344L1180 342L1180 338L1182 339L1181 341L1182 341L1183 341L1183 339L1185 339L1185 337L1186 339L1187 337L1189 338L1190 337L1190 338L1194 336L1195 332L1198 332L1200 328L1201 324L1204 325L1204 323L1205 322L1205 320L1206 321L1207 320L1206 318L1208 319L1210 318L1209 317L1209 318L1208 317L1208 313L1210 312L1208 310L1210 309L1209 311L1211 310L1210 308L1213 306L1214 302L1216 301L1215 299L1218 298L1218 292L1220 292L1219 288L1220 286L1215 282L1218 280L1220 281L1219 278L1217 275L1219 276L1220 273L1217 268L1215 267L1212 255L1206 250L1212 243L1211 241L1212 243L1214 242L1214 238L1218 238L1220 236L1222 236L1223 233L1220 232L1218 233L1214 230L1211 231L1209 235L1207 235L1205 232L1207 230L1205 228L1201 227L1199 223L1201 220L1203 222L1203 220L1207 219L1208 215L1213 213L1215 209L1219 208L1221 211L1216 217L1216 219L1218 219L1218 221L1215 222L1216 223L1226 216L1230 216L1233 211L1239 208L1242 202L1249 205L1250 203L1248 200L1253 200L1255 197L1256 197L1257 193L1259 194L1259 195L1260 196L1260 197L1261 197L1260 195L1260 195L1263 193L1264 190L1262 180L1267 176L1272 178L1273 178L1276 170L1277 162L1280 159L1280 155L1282 154L1272 156L1270 159L1263 159L1261 156L1261 151L1259 151L1255 147L1247 146L1246 144L1246 141L1243 135L1241 128L1237 121L1233 121L1227 117Z"/>
+<path d="M1158 350L1159 350L1159 350L1158 350Z"/>
+<path d="M1164 350L1165 351L1165 350L1164 350Z"/>
+<path d="M1165 350L1166 351L1166 350L1165 350Z"/>
+<path d="M1166 356L1159 358L1156 363L1156 368L1161 370L1165 367L1168 360L1166 356Z"/>
+<path d="M1170 378L1170 378L1170 378L1170 378Z"/>
+<path d="M1172 384L1172 383L1172 383L1172 384Z"/>
+<path d="M1171 384L1171 384L1171 384L1171 384Z"/>
+<path d="M1171 384L1170 385L1171 384L1171 384Z"/>
+<path d="M1171 385L1171 385L1171 385L1171 385Z"/>
+<path d="M1162 392L1162 390L1161 388L1159 384L1162 392Z"/>
+<path d="M1163 420L1164 418L1164 416L1164 412L1163 420Z"/>
+<path d="M1171 438L1171 438L1171 438L1171 438Z"/>
+<path d="M1165 442L1166 442L1165 442L1165 442Z"/>
+<path d="M1172 442L1172 442L1172 442L1172 442Z"/>
+<path d="M1171 444L1171 443L1170 444L1171 444Z"/>
+<path d="M1162 444L1163 444L1163 443L1162 444Z"/>
+<path d="M1170 444L1170 444L1170 444L1170 444Z"/>
+<path d="M1171 445L1171 445L1171 445L1171 445Z"/>
+<path d="M1170 446L1170 446L1170 446L1170 446Z"/>
+<path d="M1162 446L1161 446L1160 448L1161 446L1162 446Z"/>
+<path d="M1155 457L1154 453L1154 449L1154 453L1155 457Z"/>
+<path d="M1173 473L1172 473L1172 473L1173 473Z"/>
+<path d="M1176 345L1176 346L1176 344L1176 345Z"/>
+<path d="M1175 345L1175 346L1175 346L1175 345Z"/>
+<path d="M1177 361L1177 361L1177 361L1177 361Z"/>
+<path d="M1174 379L1173 379L1173 379L1174 379Z"/>
+<path d="M1175 382L1175 382L1175 382L1175 382Z"/>
+<path d="M1174 384L1175 384L1175 383L1174 384Z"/>
+<path d="M1175 386L1175 385L1174 386L1175 386Z"/>
+<path d="M1175 432L1175 432L1175 432L1175 432Z"/>
+<path d="M1180 436L1180 436L1180 436L1180 436Z"/>
+<path d="M1175 437L1175 437L1175 437L1175 437Z"/>
+<path d="M1179 441L1178 442L1179 441L1179 441Z"/>
+<path d="M1175 458L1175 459L1175 459L1175 458Z"/>
+<path d="M1175 460L1175 459L1175 460L1175 460Z"/>
+<path d="M1175 461L1175 460L1175 461L1175 461Z"/>
+<path d="M1175 462L1175 461L1175 462L1175 462Z"/>
+<path d="M1175 463L1175 464L1175 464L1175 463Z"/>
+<path d="M1175 464L1175 463L1175 464L1175 464Z"/>
+<path d="M1177 464L1177 464L1177 464L1177 464Z"/>
+<path d="M1174 472L1173 472L1173 473L1174 472Z"/>
+<path d="M1171 476L1175 474L1176 473L1175 474L1171 476Z"/>
+<path d="M1182 342L1182 341L1182 341L1182 342Z"/>
+<path d="M1181 363L1181 363L1181 363L1181 363Z"/>
+<path d="M1186 384L1185 384L1185 384L1186 384Z"/>
+<path d="M1183 385L1183 385L1183 385L1183 385Z"/>
+<path d="M1185 418L1185 418L1185 418L1185 418Z"/>
+<path d="M1185 418L1185 418L1185 418L1185 418Z"/>
+<path d="M1185 421L1185 421L1185 421L1185 421Z"/>
+<path d="M1184 423L1185 422L1184 422L1184 423L1184 423Z"/>
+<path d="M1184 423L1184 423L1184 423L1184 423Z"/>
+<path d="M1185 426L1185 426L1185 426L1185 426Z"/>
+<path d="M1183 427L1183 427L1183 427L1183 427Z"/>
+<path d="M1181 429L1181 428L1181 428L1181 429Z"/>
+<path d="M1185 429L1185 429L1185 429L1185 429Z"/>
+<path d="M1185 437L1185 437L1185 437L1185 437Z"/>
+<path d="M1182 437L1182 437L1182 437L1182 437Z"/>
+<path d="M1183 437L1183 438L1183 438L1183 437Z"/>
+<path d="M1187 440L1188 440L1187 440L1187 440Z"/>
+<path d="M1184 442L1185 442L1184 442L1184 442Z"/>
+<path d="M1186 443L1186 443L1186 443L1186 443Z"/>
+<path d="M1182 443L1181 443L1182 443L1182 443Z"/>
+<path d="M1183 445L1184 443L1181 446L1183 445Z"/>
+<path d="M1181 445L1181 446L1181 446L1181 445Z"/>
+<path d="M1187 446L1186 447L1186 447L1187 446Z"/>
+<path d="M1202 326L1203 325L1202 325L1202 326Z"/>
+<path d="M1196 333L1197 332L1196 333L1196 333Z"/>
+<path d="M1191 349L1191 350L1191 350L1191 349Z"/>
+<path d="M1191 350L1191 350L1191 350L1191 350Z"/>
+<path d="M1195 353L1195 352L1195 352L1195 353Z"/>
+<path d="M1195 383L1194 383L1195 384L1195 383Z"/>
+<path d="M1206 385L1206 393L1206 393L1206 385Z"/>
+<path d="M1199 392L1199 391L1199 391L1199 392Z"/>
+<path d="M1189 400L1188 400L1188 401L1189 400Z"/>
+<path d="M1203 422L1204 420L1205 417L1205 414L1203 422Z"/>
+<path d="M1200 423L1200 423L1200 423L1200 423Z"/>
+<path d="M1197 424L1198 423L1197 423L1197 424Z"/>
+<path d="M1194 426L1193 426L1194 426L1194 426Z"/>
+<path d="M1191 428L1192 428L1192 428L1191 428Z"/>
+<path d="M1189 430L1189 429L1189 429L1189 430Z"/>
+<path d="M1190 431L1191 431L1191 430L1190 431Z"/>
+<path d="M1191 434L1191 433L1191 433L1191 434Z"/>
+<path d="M1193 436L1193 437L1193 436L1193 436Z"/>
+<path d="M1189 440L1189 439L1189 439L1189 440Z"/>
+<path d="M1192 443L1189 449L1189 449L1192 443Z"/>
+<path d="M1214 211L1214 211L1214 211L1214 211Z"/>
+<path d="M1218 275L1218 276L1217 275L1218 275Z"/>
+<path d="M1219 285L1219 286L1219 285L1219 285Z"/>
+<path d="M1215 300L1215 300L1216 300L1215 300Z"/>
+<path d="M1212 307L1212 308L1212 308L1212 307Z"/>
+<path d="M1209 310L1209 309L1209 309L1209 310Z"/>
+<path d="M1208 320L1208 320L1208 320L1208 320Z"/>
+<path d="M1208 331L1208 331L1208 331L1208 331Z"/>
+<path d="M1213 343L1217 335L1220 321L1218 319L1215 321L1211 331L1210 335L1213 343Z"/>
+<path d="M1208 332L1208 332L1208 332L1208 332Z"/>
+<path d="M1217 338L1217 338L1217 338L1217 338Z"/>
+<path d="M1218 342L1217 343L1218 343L1218 342Z"/>
+<path d="M1219 345L1216 351L1216 351L1219 345Z"/>
+<path d="M1210 364L1208 371L1208 371L1210 364Z"/>
+<path d="M1224 218L1225 218L1224 217L1224 218Z"/>
+<path d="M1223 220L1222 219L1222 219L1223 220Z"/>
+<path d="M1223 220L1223 220L1223 220L1223 220Z"/>
+<path d="M1221 220L1222 220L1222 220L1221 220Z"/>
+<path d="M1225 221L1225 221L1225 221L1225 221Z"/>
+<path d="M1220 277L1219 276L1219 276L1220 277Z"/>
+<path d="M1220 277L1219 277L1219 277L1220 277Z"/>
+<path d="M1222 281L1222 281L1222 280L1222 281Z"/>
+<path d="M1222 283L1221 282L1221 283L1222 283Z"/>
+<path d="M1220 284L1219 284L1219 284L1220 284Z"/>
+<path d="M1221 283L1220 284L1221 284L1221 283Z"/>
+<path d="M1222 284L1221 284L1221 284L1222 284Z"/>
+<path d="M1220 285L1221 284L1221 284L1220 285Z"/>
+<path d="M1221 286L1220 285L1219 285L1221 286Z"/>
+<path d="M1222 286L1221 286L1222 287L1222 286Z"/>
+<path d="M1221 287L1221 287L1221 287L1221 287Z"/>
+<path d="M1221 287L1221 287L1221 287L1221 287Z"/>
+<path d="M1221 288L1221 287L1221 288L1221 288Z"/>
+<path d="M1220 287L1220 288L1221 288L1220 287Z"/>
+<path d="M1220 292L1220 292L1220 292L1220 292Z"/>
+<path d="M1227 316L1227 316L1227 316L1227 316Z"/>
+<path d="M1223 324L1222 332L1222 332L1223 324Z"/>
+        </g>
+        <g class="us">
+<path d="M58 150L189 150L191 147L193 152L206 156L217 157L221 155L238 165L239 168L241 168L244 173L249 176L251 189L246 199L248 202L266 194L265 190L267 188L276 188L285 179L301 179L305 175L312 161L319 164L319 174L323 180L308 188L305 198L306 201L308 202L308 199L309 201L309 203L291 208L299 208L290 209L289 216L285 222L282 218L284 226L280 234L281 229L279 226L278 220L278 228L275 227L279 229L281 246L278 251L265 261L255 275L255 285L261 308L259 320L255 320L253 315L247 301L248 296L243 286L242 285L237 288L231 283L215 285L216 292L209 292L206 288L198 287L191 289L180 301L180 315L178 315L171 312L162 290L158 287L154 287L151 293L147 291L135 273L127 273L127 276L114 276L96 268L96 266L85 268L78 257L68 253L50 212L50 195L53 175L49 156L50 154L56 157L59 164L58 150Z"/>
+<path d="M-28 2L-28 69L-19 71L-12 79L-2 73L8 83L16 96L24 101L24 105L21 109L14 104L13 97L7 92L4 85L-8 84L-23 75L-36 71L-43 71L-57 65L-63 67L-62 72L-79 77L-78 66L-73 64L-74 62L-90 76L-87 80L-91 85L-101 90L-111 100L-141 111L-142 110L-127 101L-121 100L-108 89L-105 79L-110 81L-112 80L-114 83L-117 79L-119 82L-120 78L-128 81L-128 74L-131 72L-137 73L-144 68L-144 64L-148 61L-146 57L-140 49L-133 50L-129 46L-122 45L-126 40L-122 37L-132 40L-142 40L-149 38L-157 31L-140 24L-136 24L-137 28L-127 28L-144 14L-151 12L-148 8L-140 8L-128 -2L-110 -6L-102 -10L-95 -8L-92 -5L-82 -6L-82 -4L-75 -3L-47 0L-41 -1L-28 2Z"/>
+<path d="M-87 86L-81 89L-90 95L-93 90L-87 86Z"/>
+<path d="M-174 44L-160 48L-164 50L-169 47L-173 48L-174 44Z"/>
+<path d="M-97 357L-94 361L-98 365L-100 359L-99 355L-97 357Z"/>
+<path d="M-149 69L-146 69L-145 72L-148 73L-154 70L-149 69Z"/>
+<path d="M-100 352L-102 353L-103 351L-100 352Z"/>
+<path d="M-109 345L-108 348L-110 348L-109 345Z"/>
+<path d="M-116 341L-116 344L-118 342L-116 341Z"/>
+<path d="M-103 349L-106 349L-103 349Z"/>
+        </g>
+        <g class="stops">
+          <g class="stop" role="button" tabindex="0" aria-label="Beijing — raised here"><circle class="halo" cx="1193" cy="215" r="9"/><circle cx="1193" cy="215" r="9"/><circle class="hit" cx="1193" cy="215" r="60"/><text class="stop-num" x="1193" y="215" text-anchor="middle" dominant-baseline="central">01</text></g>
+          <g class="stop" role="button" tabindex="0" aria-label="Coconut Creek, Florida — grades 9-12"><circle class="halo" cx="252" cy="306" r="9"/><circle cx="252" cy="306" r="9"/><circle class="hit" cx="252" cy="306" r="60"/><text class="stop-num" x="252" y="306" text-anchor="middle" dominant-baseline="central">02</text></g>
+          <g class="stop" role="button" tabindex="0" aria-label="Berkeley, California — grade 10 summer session"><circle class="halo" cx="60" cy="230" r="9"/><circle cx="60" cy="230" r="9"/><circle class="hit" cx="60" cy="230" r="60"/><text class="stop-num" x="60" y="230" text-anchor="middle" dominant-baseline="central">03</text></g>
+          <g class="stop" role="button" tabindex="0" aria-label="Shihezi, Xinjiang — grade 10 eye screening"><circle class="halo" cx="1049" cy="184" r="9"/><circle cx="1049" cy="184" r="9"/><circle class="hit" cx="1049" cy="184" r="60"/><text class="stop-num" x="1049" y="184" text-anchor="middle" dominant-baseline="central">04</text></g>
+          <g class="stop" role="button" tabindex="0" aria-label="Yushu, Qinghai — grade 11 eye screening"><circle class="halo" cx="1101" cy="264" r="9"/><circle cx="1101" cy="264" r="9"/><circle class="hit" cx="1101" cy="264" r="60"/><text class="stop-num" x="1101" y="264" text-anchor="middle" dominant-baseline="central">05</text></g>
+        </g>
+      </svg>
+      <canvas id="mapCanvas" aria-hidden="true"></canvas>
+      <p class="map-altnote">▲ altitude · meters above sea level</p>
+      <ol class="map-legend">
+        <li role="button" tabindex="0"><b>01 · Beijing, China</b><span class="when">Grades 0–9 · Raised here</span><span class="alt">▲ 43 m</span></li>
+        <li role="button" tabindex="0"><b>02 · Coconut Creek, USA</b><span class="when">Grades 9–12 · High school</span><span class="alt">▲ 3 m</span></li>
+        <li role="button" tabindex="0"><b>03 · Berkeley, USA</b><span class="when">Grade 10 · Six-week summer session</span><span class="alt">▲ 52 m</span></li>
+        <li role="button" tabindex="0"><b>04 · Shihezi, China</b><span class="when">Grade 10 · Eye screening</span><span class="alt">▲ ~450 m</span></li>
+        <li role="button" tabindex="0"><b>05 · Yushu, China</b><span class="when">Grade 11 · Eye screening</span><span class="alt">▲ ~3,700 m</span></li>
+      </ol>
+    </div>
+    <div class="map-detail" id="mapDetail" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ prologue ============ -->
+<section class="prologue" id="prologue">
+  <div class="prologue-inner">
+    <p class="prologue-mark reveal">The beginning</p>
+    <p class="lead reveal">Every journey starts small. Mine began at a food bank and a shoreline — groceries one week, trash bags the next. I didn't plan a path. I just kept noticing things.</p>
+    <p class="rest reveal">How much a shoreline can hold. How far a meal can travel. How a place leaves its mark on a body. This page is what I noticed.</p>
+  </div>
+</section>
+
+<!-- ============ chapter 01 · the shore ============ -->
+<section class="chapter ch-dark" id="shore">
+  <div class="chapter-bg" style="--cbg:url('assets/shore_bg.jpg')"></div>
+  <div class="chapter-inner">
+    <p class="eyebrow reveal">Coconut Creek, Florida · Sea level · Grades 9–12</p>
+    <h2 class="reveal">The shore was my first <em>classroom</em>.</h2>
+    <div class="cards2">
+      <div class="card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M2 12c2.5-3 5.5-3 8 0s5.5 3 8 0 3.5-1.6 4-2"/><path d="M2 17c2.5-3 5.5-3 8 0s5.5 3 8 0 3.5-1.6 4-2"/><path d="M4 4h2m4 0h2m4 0h2"/></svg>
+        <p class="kicker">Fort Lauderdale Beach Cleanup</p>
+        <h3>What the tide leaves behind</h3>
+        <p>I picked up litter, sorted recyclables, and talked with visitors about why the shoreline matters. Some mornings the tide brought back more than we carried away — and I started asking where it all comes from.</p>
+      </div>
+      <div class="card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 8l9-4 9 4v2H3V8z"/><path d="M5 10v9m4-9v9m6-9v9m4-9v9M3 19h18"/></svg>
+        <p class="kicker">Coral Springs Food Distribution</p>
+        <h3>Food that almost wasn't</h3>
+        <p>With local supermarkets, I helped collect near-expiry groceries and redistribute them to families in need. A carton of milk pulled from a dumpster-bound pallet could still end up on someone's table — a small victory worth repeating.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ chapter 02 · the seminar ============ -->
+<section class="chapter ch-light" id="seminar">
+  <div class="chapter-bg" style="--cbg:url('assets/seminar_bg.jpg')"></div>
+  <div class="chapter-inner">
+    <div class="ch-grid">
+      <div>
+        <p class="eyebrow reveal">Berkeley, California · Pre-college summer session · Grade 10</p>
+        <h2 class="reveal">From shoreline to <em>syllabus</em>.</h2>
+        <div class="prose reveal">
+          <p>During the 6-week UC Berkeley summer session, I enrolled in <strong>EPS 80 Environmental Earth Science</strong> and <strong>COLWRIT 9C Multilingual Academic Writing</strong> — my first chance to give the beach its proper language.</p>
+          <p>I earned an A in both courses, achieving a 4.0 term GPA. This summer experience deepened my understanding of how Earth systems interact with human health — laying the academic foundation for my later fieldwork on environmental and public health.</p>
+          <span class="note">For the first time, the beach and the syllabus felt like the same place.</span>
+        </div>
+      </div>
+      <div class="media-col reveal">
+        <figure class="doc">
+          <img src="assets/berkeley_transcript.png" alt="UC Berkeley transcript — EPS 80 Environmental Earth Science and COLWRIT 9C, both A, term GPA 4.0">
+          <figcaption>UC Berkeley · 4.0 GPA</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ chapter 03 · the plateau ============ -->
+<section class="chapter ch-dark" id="plateau">
+  <div class="chapter-bg" style="--cbg:url('assets/plateau_bg.jpg')"></div>
+  <div class="chapter-inner">
+    <p class="eyebrow reveal">Shihezi, Xinjiang &amp; Yushu, Qinghai · 450 m → 3,700 m · Grades 10–11</p>
+    <h2 class="reveal">On the roof of the world, I watched the environment write itself on the <em>body</em>.</h2>
+    <div class="ch-grid">
+      <div class="prose reveal">
+        <p>With the <strong>"Eyes Care Action"</strong> program, I helped screen children in remote communities: <strong>4,000 across 38 schools</strong> in Shihezi, Xinjiang (2025), and <strong>5,000 across 8 schools</strong> in Yushu and Nangqian, Qinghai (2026).</p>
+        <p>The numbers told a story the textbooks hadn't: in these high, bright valleys, intense ultraviolet light and thin, dry air take a visible toll on children's eyes. I had come to help — and I ended up learning why the help was needed.</p>
+        <p>I recorded eye-health data and taught children how to protect their sight.</p>
+        <p>That same summer, back in Beijing, I joined Roots &amp; Shoots' YACC (Youth Action for Climate Change) youth green program — the plateau had taught me what the environment does to a body; YACC was my turn to ask what young people can do for the environment.</p>
+        <span class="note">In Yushu, a reincarnated lama came to the screening line, and monks helped translate and organize the day. Care only works if it speaks the community's language — and respects its altitude.</span>
+        <a class="ext-btn reveal" href="http://www.hoson.org/xmjs/" target="_blank" rel="noopener noreferrer">Hoson Foundation ↗</a>
+      </div>
+      <div class="media-col reveal">
+        <figure class="tall">
+          <img src="assets/temple.jpg" alt="The volunteer team in front of a Tibetan temple in Qinghai">
+          <figcaption>Yushu, Qinghai — the team at rest between screenings</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b>2</b><span>Expeditions</span></div>
+      <div class="stat reveal"><b>46</b><span>Schools reached</span></div>
+      <div class="stat reveal"><b>9,000+</b><span>Children screened</span></div>
+      <div class="stat reveal"><b>6</b><span>Devices mastered</span></div>
+    </div>
+    <div class="photo-grid">
+      <figure class="reveal">
+        <img src="assets/redscarf.jpg" alt="A girl with a red scarf is examined with the RMK-800 refractometer">
+      </figure>
+      <figure class="reveal">
+        <img src="assets/student.jpg" alt="A student in uniform leans into the vision testing device">
+      </figure>
+      <figure class="reveal">
+        <img src="assets/axial.jpg" alt="Measuring axial eye length in a school screening room">
+      </figure>
+      <figure class="reveal">
+        <img src="assets/seniors.jpg" alt="Older community members receive vision screening">
+      </figure>
+      <figure class="reveal">
+        <img src="assets/doctor.jpg" alt="A volunteer and a doctor beside the eye-examination equipment">
+      </figure>
+      <figure class="reveal">
+        <img src="assets/screener.jpg" alt="A young volunteer performs a vision screening for a child">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ chapter 04 · the lab ============ -->
+<section class="chapter ch-light" id="lab">
+  <div class="chapter-bg" style="--cbg:url('assets/lab_bg.jpg')"></div>
+  <div class="chapter-inner">
+    <div class="ch-grid">
+      <div>
+        <p class="eyebrow reveal">iGEM · Targeted therapy for non-small cell lung cancer · Grade 11</p>
+        <h2 class="reveal">The air we breathe reaches the <em>cells</em> we lose.</h2>
+        <div class="prose reveal">
+          <p>In Grade 11, I led the wiki team of the <strong>ZhuLu China</strong> iGEM project — engineering <strong>RGD-xES</strong>, a fusion protein that attacks non-small-cell lung cancer <em>physically instead of chemically</em>. Its RGD module locks onto integrins on the tumor surface; its elastin-like ES repeats then self-assemble under the tumor's acidic microenvironment, capping the cell in a protein shell.</p>
+          <p>Across five design–build–test–learn cycles, the candidates RGD-6ES and RGD-8ES left normal bronchial cells near 100% viable at 1 mg/mL over seven days — yet at half that dose cut A549 lung-cancer viability to roughly a third, and under a tenth, within 48 hours. The environment I had been reading outdoors was suddenly legible in a petri dish: pH, hypoxia, the geography of a tumor.</p>
+          <span class="note">The same thread — place enters the body — ran from a snowfield to a petri dish.</span>
+          <a class="ext-btn reveal" href="https://2026.igem.wiki/zhulu-china/index.html" target="_blank" rel="noopener noreferrer">View Full iGEM Wiki ↗</a>
+        </div>
+      </div>
+      <div class="media-col reveal">
+        <figure class="wide">
+          <img src="assets/lab1.jpg" alt="Bench work in the wet lab">
+        </figure>
+        <figure class="wide">
+          <img src="assets/lab2.jpg" alt="Hands working with laboratory instruments">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ chapter 05 · the clinic ============ -->
+<section class="chapter ch-dark" id="clinic">
+  <div class="chapter-bg" style="--cbg:url('assets/clinic_bg.jpg')"></div>
+  <div class="chapter-inner">
+    <p class="eyebrow reveal">Hero EMR · Medical informatization internship · Grade 11</p>
+    <h2 class="reveal">Healing the <em>system</em> that heals.</h2>
+    <div class="ch-grid">
+      <div class="prose reveal">
+        <p>As a paid summer intern at <strong>Hero EMR</strong> — a startup using AI to help U.S. small clinics run at lower cost — I studied how China's medical system manages high patient volume.</p>
+        <p>I analyzed China's health platforms and hospital information systems, and turned the full patient journey — registration to settlement — into concrete product suggestions for Hero EMR.</p>
+        <p>I walked through hospital lobbies in Beijing mapping patient flows the way I had once walked a beach mapping litter. The system people move through is an environment too — and it can be redesigned.</p>
+        <a class="ext-btn" href="https://heroemr.com" target="_blank" rel="noopener noreferrer">Visit heroemr.com ↗</a>
+      </div>
+      <div class="media-col reveal">
+        <figure class="wide">
+          <img src="assets/clinic_bg.jpg" alt="A modern small-clinic reception with digital check-in">
+          <figcaption>Where efficiency becomes a form of care</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ chapter 06 · the table ============ -->
+<section class="chapter ch-light" id="table">
+  <div class="chapter-bg" style="--cbg:url('assets/table_bg.jpg')"></div>
+  <div class="chapter-inner">
+    <div class="ch-grid">
+      <div>
+        <p class="eyebrow reveal">Geriatric nutrition &amp; health · Back to the table · Grades 10–12</p>
+        <h2 class="reveal">The journey returns to the <em>table</em>.</h2>
+        <div class="prose reveal">
+          <p>At the <strong>2025 Geriatric Nutrition &amp; Health Conference</strong>, I sat in on large-scale cohort research — studies tracking thousands of older adults to ask what they eat, what they lack, what fails first.</p>
+          <p>I'm now contributing to a <strong>nutrition-science paper</strong>, and my IB Economics Extended Essay asks whether China's senior food standards can ease the "lemon market" — whether regulation can protect older consumers when quality is hard to see.</p>
+          <p>The groceries I once recovered and the cohort studies I now follow are asking the same question from two ends of the same table.</p>
+        </div>
+      </div>
+      <div class="media-col reveal">
+        <figure class="tall">
+          <img src="assets/conference.jpg" alt="Francis at the 2025 Geriatric Nutrition and Health Conference">
+          <figcaption>2025 Geriatric Nutrition &amp; Health Conference</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ honors ============ -->
+<section class="honors" id="honors">
+  <div class="section-head">
+    <p class="eyebrow reveal">Recognition</p>
+    <h2 class="reveal">Honors &amp; Awards</h2>
+    <p class="reveal">A few milestones along the path — from international research competitions to service recognized at home.</p>
+  </div>
+  <div class="honors-grid">
+    <div class="honor reveal">
+      <div class="honor-media"><img src="assets/volunteer_cert.jpg" alt="Outstanding Volunteer certificate from the Hoson Foundation"></div>
+      <div class="honor-body">
+        <p class="lvl">Service · 2026</p>
+        <h3>Outstanding Volunteer</h3>
+        <p>Hoson Foundation's "Eyes Care Action," for safeguarding children's eye health across two plateau expeditions.</p>
+      </div>
+    </div>
+    <div class="honor reveal">
+      <div class="honor-media"><img src="assets/nhs.jpg" alt="National Honor Society certificate for Francis Zhaohan Li"></div>
+      <div class="honor-body">
+        <p class="lvl">National · 2025</p>
+        <h3>National Honor Society</h3>
+        <p>North Broward Preparatory School Chapter — inducted for scholarship, service, leadership, and character.</p>
+      </div>
+    </div>
+    <div class="honor reveal">
+      <div class="honor-media"><img src="assets/ftc.jpg" alt="FIRST Tech Challenge medals including Driver and Media"></div>
+      <div class="honor-body">
+        <p class="lvl">Competition</p>
+        <h3>FIRST Tech Challenge</h3>
+        <p>Earning the FIRST Driver and FIRST Media medals on the FTC field.</p>
+      </div>
+    </div>
+    <div class="honor reveal">
+      <div class="honor-media"><img src="assets/cyberpatriot.jpg" alt="CyberPatriot XVI commemorative items"></div>
+      <div class="honor-body">
+        <p class="lvl">National</p>
+        <h3>CyberPatriot XVI</h3>
+        <p>The National Youth Cyber Education Program — with an Honorable Mention to show for it.</p>
+      </div>
+    </div>
+    <div class="honor reveal">
+      <div class="honor-media logo"><img src="assets/ucf_logo.png" alt="UCF Programming Team logo"></div>
+      <div class="honor-body">
+        <p class="lvl">State · 2025</p>
+        <h3>Judge's Prize</h3>
+        <p>University of Central Florida High School Programming Competition.</p>
+      </div>
+    </div>
+    <div class="honor reveal">
+      <div class="honor-media"><img src="assets/robomaster.jpg" alt="RoboMaster R badge"></div>
+      <div class="honor-body">
+        <p class="lvl">Robotics</p>
+        <h3>RoboMaster</h3>
+        <p>DJI RoboMaster Robotics Summer Camp — robotics as a first lesson in engineering systems.</p>
+      </div>
+    </div>
+    <div class="honor reveal">
+      <div class="honor-media logo"><img src="assets/mat_logo.png" alt="Mu Alpha Theta logo"></div>
+      <div class="honor-body">
+        <p class="lvl">National</p>
+        <h3>Mu Alpha Theta</h3>
+        <p>National Mathematics Honor Society — NBPS chapter membership.</p>
+      </div>
+    </div>
+    <div class="honor wide reveal">
+      <div class="honor-media logo"><img src="assets/bet_paper.png" alt="First page of the AI-Related Mergers and Labor Markets paper"></div>
+      <div class="honor-body">
+        <p class="lvl">Research · Grade 11</p>
+        <h3>Co-author · AI &amp; Antitrust Economics</h3>
+        <p>Co-author of <em>"AI-Related Mergers and Labor Markets: Introducing BET to Antitrust Review"</em> — a Binary Expansion Test for screening AI-driven mergers, analyzed across U.S. labor-market data in R.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ beyond ============ -->
+<section class="beyond" id="more">
+  <div class="section-head">
+    <p class="eyebrow reveal">Beyond the theme</p>
+    <h2 class="reveal">Other paths I walk</h2>
+    <p class="reveal">Branches off the main trail — debate, leadership, and a little food science.</p>
+  </div>
+  <div class="beyond-grid">
+    <div class="beyond-item reveal">
+      <p class="tag">Debate · Grades 9–11</p>
+      <h3>Model United Nations</h3>
+      <p>Algeria at ArchiMUN, EmpireMUN in New York, and Best Delegate at JAGMUN 2025 (Russia).</p>
+    </div>
+    <div class="beyond-item reveal">
+      <p class="tag">Leadership · Grades 10–11</p>
+      <h3>NBPS Computer Science Club</h3>
+      <p>Secretary of a 17-member club — logistics, attendance, and training coordination.</p>
+    </div>
+    <div class="beyond-item reveal">
+      <p class="tag">Food Science · Grade 10</p>
+      <h3>Functional Ice Cream R&amp;D</h3>
+      <p>Natural plant extracts, texture profiling on a TA-XT2i analyzer, and sensory evaluation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ epilogue ============ -->
+<section class="epilogue" id="epilogue">
+  <div class="epilogue-inner">
+    <p class="eyebrow reveal">Where the line leads</p>
+    <blockquote class="reveal">"I didn't set out to connect the dots. I just kept noticing — how much a coastline can hold, how hard the light is on children's eyes, how a waiting room can be redesigned. <em>The noticing became a direction.</em> I intend to keep following it."</blockquote>
+    <div class="sig reveal">
+      <img src="assets/portrait.jpg" alt="Portrait of Francis Zhaohan Li">
+      <p>Francis Zhaohan Li<br>Coconut Creek, Florida</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="f-brand">Francis <span style="color:var(--amber)">Li</span></p>
+  <p>From shore to plateau — and back to the table</p>
+</footer>
+
+<!-- ============ lightbox ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">‹</button>
+  <figure class="lb-stage">
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">›</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- entrance splash (two-way toggle) ---- */
+  var splash = document.getElementById('splash');
+  var bodyEl = document.body;
+  var splashDone = false;
+
+  function enterSite(){
+    if(splashDone){ return; }
+    splashDone = true;
+    bodyEl.classList.remove('splash-open');
+    splash.classList.add('hide');
+    setTimeout(function(){
+      splash.style.display = 'none';
+      railStart();
+      var map = document.getElementById('map');
+      if(map){ window.scrollTo({top: map.getBoundingClientRect().top + window.scrollY, behavior:'smooth'}); }
+    }, 900);
+  }
+  function returnHome(){
+    if(!splashDone){ return; }
+    splashDone = false;
+    bodyEl.classList.add('splash-open');
+    splash.style.display = '';
+    void splash.offsetWidth;
+    splash.classList.remove('hide');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  if(splash){
+    bodyEl.classList.add('splash-open');
+    splash.addEventListener('click', enterSite);
+    splash.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); enterSite(); }
+    });
+  }
+  var homeLink = document.querySelector('.nav-brand');
+  if(homeLink){
+    homeLink.addEventListener('click', function(ev){
+      ev.preventDefault();
+      returnHome();
+    });
+  }
+
+  /* ---- rail chibi: rappels down the rail on scroll-down, climbs on scroll-up ---- */
+  var railWalker = document.getElementById('railWalker');
+  var railCtx = railWalker ? railWalker.getContext('2d') : null;
+  var railRaf = null;
+  var railOn = false;
+  var rappelFrames = [], climbFrames = [];
+  for(var ri = 0; ri < 10; ri++){
+    (function(idx){
+      var imD = new Image();
+      imD.src = 'assets/rappel_cycle/d' + (idx < 10 ? '0' + idx : idx) + '.png';
+      rappelFrames.push(imD);
+      var imU = new Image();
+      imU.src = 'assets/climb_cycle/u' + (idx < 10 ? '0' + idx : idx) + '.png';
+      climbFrames.push(imU);
+    })(ri);
+  }
+  var lastScrollY = window.scrollY;
+  var curTop = 0, targetTop = 0, curDir = 1;
+  function railDraw(frame){
+    if(!railCtx){ return; }
+    var c = railCtx;
+    c.clearRect(0, 0, 150, 200);
+    /* fixed opaque disc — the figure keeps one consistent look on any background */
+    c.beginPath();
+    c.arc(75, 100, 68, 0, Math.PI * 2);
+    c.fillStyle = '#F3E7CC';
+    c.fill();
+    c.lineWidth = 2.5;
+    c.strokeStyle = 'rgba(130,95,55,.22)';
+    c.stroke();
+    if(frame && frame.complete && frame.naturalWidth > 0){
+      c.drawImage(frame, 0, 0, 150, 200);
+    }
+  }
+  function railTick(now){
+    var journey = document.getElementById('journey');
+    if(!railWalker || !railCtx || !journey){ return; }
+    if(window.innerWidth < 1180){ return; }
+    var track = journey.querySelector('.journey-track');
+    var vh = window.innerHeight;
+    var trackH = track ? track.offsetHeight : vh * 0.46;
+    var walkerH = 85;
+    var docH = document.documentElement.scrollHeight - vh;
+    var p = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+    targetTop = p * (trackH - walkerH);
+    curTop += (targetTop - curTop) * 0.16;
+    var sy = window.scrollY;
+    var moving = Math.abs(sy - lastScrollY) > 0.5;
+    if(moving){ curDir = sy > lastScrollY ? 1 : -1; lastScrollY = sy; }
+    var frames = curDir === 1 ? rappelFrames : climbFrames;
+    var idx = Math.floor(now / (1000 / 12)) % frames.length;
+    var fr = frames[idx];
+    if(!fr || !fr.complete || fr.naturalWidth <= 0){ fr = frames[0]; }
+    railDraw(fr);
+    railWalker.style.top = curTop + 'px';
+  }
+  function railLoop(now){ railTick(now); railRaf = requestAnimationFrame(railLoop); }
+  function railStart(){ if(railOn || !railWalker){ return; } railOn = true; railRaf = requestAnimationFrame(railLoop); }
+  function railStop(){ railOn = false; if(railRaf){ cancelAnimationFrame(railRaf); railRaf = null; } }
+  if(railWalker){
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ railStop(); } else { railStart(); }
+    });
+  }
+
+  /* ---- lightbox: tap any photo to zoom, swipe / arrows to browse ---- */
+  var lbItems = [];
+  var lbIdx = 0;
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  function collectLb(){
+    lbItems = Array.prototype.slice.call(document.querySelectorAll('.media-col img, .honor-media img, .card img, .honor img, .prose img, .lb-extra img'));
+  }
+  function openLb(i){
+    if(!lb || !lbItems.length){ return; }
+    lbIdx = ((i % lbItems.length) + lbItems.length) % lbItems.length;
+    var item = lbItems[lbIdx];
+    var src = item.getAttribute('data-full') || item.getAttribute('src') || '';
+    var cap = '';
+    var fig = item.closest('figure');
+    if(fig){ var fc = fig.querySelector('figcaption'); if(fc){ cap = fc.textContent; } }
+    lbImg.src = src;
+    lbCap.textContent = cap;
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){ if(!lb){ return; } lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+  function stepLb(delta){ if(lbItems.length){ openLb(lbIdx + delta); } }
+  function bindLb(){
+    collectLb();
+    lbItems.forEach(function(img){
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e){
+        e.stopPropagation();
+        openLb(lbItems.indexOf(img));
+      });
+    });
+  }
+  if(lb){
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', function(){ stepLb(-1); });
+    document.getElementById('lbNext').addEventListener('click', function(){ stepLb(1); });
+    lb.addEventListener('click', function(e){ if(e.target === lb){ closeLb(); } });
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('open')){ return; }
+      if(e.key === 'Escape'){ closeLb(); }
+      else if(e.key === 'ArrowLeft'){ stepLb(-1); }
+      else if(e.key === 'ArrowRight'){ stepLb(1); }
+    });
+    /* touch swipe */
+    var lbX0 = null;
+    lb.addEventListener('touchstart', function(e){ lbX0 = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', function(e){
+      if(lbX0 === null){ return; }
+      var dx = e.changedTouches[0].clientX - lbX0;
+      lbX0 = null;
+      if(Math.abs(dx) > 40){ stepLb(dx < 0 ? 1 : -1); }
+    }, {passive:true});
+    bindLb();
+  }
+
+  var nav = document.getElementById('nav');
+  var links = document.querySelectorAll('.nav-links a');
+  var journey = document.getElementById('journey');
+  var journeyDot = document.getElementById('journeyDot');
+  var stops = Array.prototype.slice.call(document.querySelectorAll('.journey-stop'));
+  var chapterIds = ['shore','seminar','plateau','lab','clinic','table'];
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScrollNav(){
+    if(window.scrollY > 40){ nav.classList.add('solid'); } else { nav.classList.remove('solid'); }
+  }
+
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
+    reveals.forEach(function(el){ ro.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  var chapterEls = chapterIds.map(function(id){ return document.getElementById(id); });
+  var stopEls = stops.filter(function(s){ return chapterIds.indexOf(s.getAttribute('data-target')) !== -1; });
+  /* tap a rail dot to jump to that chapter */
+  stops.forEach(function(s){
+    s.addEventListener('click', function(){
+      var t = s.getAttribute('data-target');
+      if(!t){ return; }
+      var el = document.getElementById(t);
+      if(el){ window.scrollTo({top: el.offsetTop - 60, behavior:'smooth'}); }
+    });
+  });
+  function syncJourney(){
+    var y = window.scrollY + window.innerHeight * 0.5;
+    var activeIdx = 0;
+    chapterEls.forEach(function(el,i){ if(el && el.offsetTop <= y){ activeIdx = i; } });
+    var count = chapterEls.length;
+    var pct = count > 1 ? activeIdx / (count - 1) : 0;
+    if(journeyDot){ journeyDot.style.top = (pct * 100) + '%'; }
+    stopEls.forEach(function(s,i){ s.classList.toggle('on', i === activeIdx); });
+    links.forEach(function(a){
+      var target = a.getAttribute('href').slice(1);
+      a.classList.toggle('current', target === chapterIds[activeIdx]);
+    });
+  }
+
+  window.addEventListener('scroll', function(){
+    onScrollNav();
+    if(journey && window.innerWidth >= 1180){ syncJourney(); }
+  }, {passive:true});
+  onScrollNav();
+  if(journey){ syncJourney(); }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var id = a.getAttribute('href');
+      if(id.length < 2){ return; }
+      var target = document.querySelector(id);
+      if(!target){ return; }
+      ev.preventDefault();
+      window.scrollTo({top: target.getBoundingClientRect().top + window.scrollY, behavior: reduceMotion ? 'auto' : 'smooth'});
+    });
+  });
+
+  /* ---- journey map interaction ---- */
+  var mapData = [
+    {
+      tag: 'Grades 0\u20139 · Raised here',
+      title: 'Two worlds, one childhood',
+      city: 'Beijing, China',
+      alt: '43 m',
+      terrain: 'North China Plain \u2014 flat and low-lying, with city dust on dry days.',
+      climate: 'Monsoon continental: hot, humid summers and cold, dry winters.',
+      desc: 'Born in the United States and raised in Beijing, I grew up bilingual and bicultural \u2014 learning early how different places shape the way people live, eat, and stay well.',
+      chips: ['Bilingual', 'Bicultural', 'Born in the U.S.'],
+      href: ''
+    },
+    {
+      tag: 'Grades 9\u201312 · High school',
+      title: 'The shore as a first classroom',
+      city: 'Coconut Creek, Florida, USA',
+      alt: '3 m',
+      terrain: 'Low Atlantic coast \u2014 barrier islands, mangroves and wetlands at sea level.',
+      climate: 'Tropical: hot and humid, with thunderstorms most summer afternoons.',
+      desc: 'Fort Lauderdale Beach Cleanup and Coral Springs Food Distribution \u2014 picking up what the tide left behind, rescuing near-expiry groceries, and starting to ask where both of them really come from.',
+      chips: ['Beach cleanup', 'Food rescue', '2 programs'],
+      href: '#shore'
+    },
+    {
+      tag: 'Grade 10 · Six-week summer session',
+      title: 'Six weeks that gave the coast a language',
+      city: 'Berkeley, CA, USA',
+      alt: '52 m',
+      terrain: 'Rolling hills above San Francisco Bay \u2014 coastal sage and eucalyptus.',
+      climate: 'Mediterranean: dry, golden summers and mild, wet winters.',
+      desc: 'UC Berkeley Pre-College: Environmental Earth Science and Academic Writing \u2014 global warming, plate tectonics, and the slow conversation between land and ocean, studied at last in proper terms.',
+      chips: ['Environmental Earth Science', 'Academic Writing'],
+      href: '#seminar'
+    },
+    {
+      tag: 'Grade 10 · Eye screening',
+      title: '4,000 children, 38 schools',
+      city: 'Shihezi, Xinjiang, China',
+      alt: '\u007e450 m',
+      terrain: 'Oasis at the foot of the Tianshan mountains, with gravel desert on three sides.',
+      climate: 'Arid continental: intense sun, long hot summers and cold, dry winters.',
+      desc: 'First "Eyes Care Action" expedition \u2014 screening children\u2019s eyes across Shihezi under the summer sun, learning pediatric eye-health tools one station at a time.',
+      chips: ['4,000 children', '38 schools'],
+      href: '#plateau'
+    },
+    {
+      tag: 'Grade 11 · Eye screening',
+      title: 'On the roof of the world',
+      city: 'Yushu, Qinghai, China',
+      alt: '\u007e3,700 m',
+      terrain: 'Tibetan Plateau high grasslands \u2014 thin air, sparse trees, and endless sky.',
+      climate: 'Plateau climate: cold year-round, fierce ultraviolet light, low oxygen.',
+      desc: 'Second expedition in Yushu and Nangqian \u2014 5,000 children across 8 schools at 3,700 meters, where a reincarnated lama joined the screening line and monks helped translate. Care in the community\u2019s own language.',
+      chips: ['5,000 children', '8 schools', '3,700 m'],
+      href: '#plateau'
+    }
+  ];
+  var mapStops = Array.prototype.slice.call(document.querySelectorAll('.mapbox .stop'));
+  var legendItems = Array.prototype.slice.call(document.querySelectorAll('.map-legend li'));
+  var mapDetail = document.getElementById('mapDetail');
+
+  function renderMapStop(i){
+    if(!mapDetail || !mapData[i]){ return; }
+    var d = mapData[i];
+    mapDetail.innerHTML =
+      '<p class="d-tag">' + d.tag + '</p>' +
+      '<h3 class="d-title">' + d.title + '</h3>' +
+      '<div class="d-head"><span class="d-city">' + d.city + '</span><span class="d-alt">' + d.alt + '</span></div>' +
+      '<p class="d-desc">' + d.desc + '</p>' +
+      '<div class="d-chips">' + d.chips.map(function(c){ return '<span>' + c + '</span>'; }).join('') + '</div>' +
+      '<div class="d-env">' +
+        '<p class="d-env-label">Terrain &amp; climate</p>' +
+        '<div class="d-env-row"><span class="d-env-k">Terrain</span><span class="d-env-v">' + d.terrain + '</span></div>' +
+        '<div class="d-env-row"><span class="d-env-k">Climate</span><span class="d-env-v">' + d.climate + '</span></div>' +
+      '</div>' +
+      (d.href ? '<a class="d-more" href="' + d.href + '">The full story \u2193</a>' : '');
+    mapDetail.classList.remove('in');
+    void mapDetail.offsetWidth;
+    mapDetail.classList.add('in');
+    mapStops.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+    legendItems.forEach(function(li, idx){ li.classList.toggle('active', idx === i); });
+  }
+
+  function scrollDetailIntoView(){
+    if(!mapDetail){ return; }
+    var rect = mapDetail.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    if(rect.top > vh - 80 || rect.bottom < 140){
+      window.scrollTo({top: rect.top + window.scrollY - 92, behavior: reduceMotion ? 'auto' : 'smooth'});
+    }
+  }
+  function bindMapTarget(el, i){
+    el.addEventListener('click', function(){ renderMapStop(i); scrollDetailIntoView(); });
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); renderMapStop(i); scrollDetailIntoView(); }
+    });
+  }
+  mapStops.forEach(bindMapTarget);
+  legendItems.forEach(bindMapTarget);
+  renderMapStop(0);
+
+  /* ---- canvas journey flow (looping, redrawn each cycle) ---- */
+  var mapCanvas = document.getElementById('mapCanvas');
+  var mapCtx = mapCanvas ? mapCanvas.getContext('2d') : null;
+  var svgMap = document.querySelector('.mapbox svg');
+  var flowPts = [[1193,215],[252,306],[60,230],[1049,184],[1101,264]];
+  var flowRaf = null, flowOn = false, flowT0 = 0, flowCycle = 13000;
+  function svgToCanvas(p){
+    if(svgMap && svgMap.createSVGPoint && svgMap.getScreenCTM){
+      var pt = svgMap.createSVGPoint();
+      pt.x = p[0]; pt.y = p[1];
+      var m = pt.matrixTransform(svgMap.getScreenCTM());
+      var r = mapCanvas.getBoundingClientRect();
+      return [m.x - r.left, m.y - r.top];
+    }
+    var W = mapCanvas.width;
+    return [p[0]*W/1400, p[1]*W/1400*500/500];
+  }
+  function flowResize(){
+    if(!mapCanvas || !svgMap){ return; }
+    var s = svgMap.getBoundingClientRect();
+    var box = document.querySelector('.mapbox').getBoundingClientRect();
+    mapCanvas.style.left = (s.left - box.left) + 'px';
+    mapCanvas.style.top = (s.top - box.top) + 'px';
+    mapCanvas.style.width = s.width + 'px';
+    mapCanvas.style.height = s.height + 'px';
+    mapCanvas.width = Math.round(s.width);
+    mapCanvas.height = Math.round(s.height);
+  }
+  function flowSegLen(a,b){ return Math.hypot(b[0]-a[0], b[1]-a[1]); }
+  function flowDraw(now){
+    if(!mapCtx || !mapCanvas){ return; }
+    var W = mapCanvas.width, H = mapCanvas.height;
+    var S = svgToCanvas;
+    mapCtx.clearRect(0,0,W,H);
+    var t = ((now - flowT0) % flowCycle) / flowCycle;
+    var total = 0, segs = [];
+    for(var i=0;i<flowPts.length-1;i++){
+      var L = flowSegLen(flowPts[i], flowPts[i+1]);
+      segs.push(L); total += L;
+    }
+    var cursor = t * total;
+    /* progress line + comet */
+    var passed = 0, prev = S(flowPts[0]);
+    mapCtx.lineWidth = 3; mapCtx.strokeStyle = 'rgba(244,190,90,.95)';
+    mapCtx.beginPath(); mapCtx.moveTo(prev[0],prev[1]);
+    var comet = null;
+    for(var k=0;k<segs.length;k++){
+      var end = S(flowPts[k+1]);
+      if(cursor >= passed + segs[k]){
+        mapCtx.lineTo(end[0],end[1]);
+        prev = end; passed += segs[k];
+      } else {
+        var f = (cursor - passed) / segs[k];
+        comet = [prev[0]+(end[0]-prev[0])*f, prev[1]+(end[1]-prev[1])*f];
+        mapCtx.lineTo(comet[0],comet[1]);
+        passed += segs[k];
+        break;
+      }
+    }
+    mapCtx.stroke();
+    /* comet head */
+    if(comet){
+      var glow = mapCtx.createRadialGradient(comet[0],comet[1],1,comet[0],comet[1],16);
+      glow.addColorStop(0,'rgba(255,214,120,.95)'); glow.addColorStop(1,'rgba(255,214,120,0)');
+      mapCtx.fillStyle = glow;
+      mapCtx.beginPath(); mapCtx.arc(comet[0],comet[1],16,0,Math.PI*2); mapCtx.fill();
+      mapCtx.fillStyle='#FFF3D6';
+      mapCtx.beginPath(); mapCtx.arc(comet[0],comet[1],3.6,0,Math.PI*2); mapCtx.fill();
+    }
+    /* visited stop pulses */
+    var reached = Math.floor((cursor / total) * (flowPts.length - 0.001));
+    for(var m=0;m<=Math.min(reached,flowPts.length-1);m++){
+      var ps = S(flowPts[m]);
+      var pulse = 0.5 + 0.5*Math.sin(now/320 + m);
+      mapCtx.strokeStyle = 'rgba(255,214,120,' + (0.25+0.3*pulse) + ')';
+      mapCtx.lineWidth = 2.2;
+      mapCtx.beginPath(); mapCtx.arc(ps[0],ps[1],(11+3*pulse),0,Math.PI*2); mapCtx.stroke();
+    }
+  }
+  function flowTick(now){
+    flowDraw(now);
+    flowRaf = requestAnimationFrame(flowTick);
+  }
+  function flowStart(){ if(flowOn || !mapCanvas){ return; } flowOn = true; flowResize(); flowT0 = performance.now(); flowRaf = requestAnimationFrame(flowTick); }
+  function flowStop(){ flowOn=false; if(flowRaf){ cancelAnimationFrame(flowRaf); flowRaf=null; } }
+  if(mapCanvas){
+    flowStart();
+    window.addEventListener('resize', function(){ flowResize(); });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){ flowStart(); } else { flowStop(); } });
+      },{threshold:0.05}).observe(document.querySelector('.mapbox'));
+    }
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ flowStop(); } else if(document.querySelector('.mapbox').getBoundingClientRect().top < window.innerHeight){ flowStart(); }
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
